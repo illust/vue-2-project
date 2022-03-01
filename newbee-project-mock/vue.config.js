@@ -10,7 +10,7 @@ module.exports = {
 
     devServer: {
 
-        public: '192.168.8.163:8081',
+        public: '192.168.191.1:8081',
 
         hot: true,
 

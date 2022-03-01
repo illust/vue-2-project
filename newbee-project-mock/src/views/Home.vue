@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div>
-      <header>
+      <header class="home-header wrap" :class="{'active': headerScroll}">
           <router-link tag="i" to="./category"><i class="nbicon nbmenu2"></i></router-link>
           <div class="header-search">
               <span class="app-name">文昊商城</span>
@@ -25,9 +25,13 @@
 
 <script>
 import {Toast} from 'vant'
+import NavBar from '@/components/NavBar'
 
 export default {
   name: 'home',
+  components:{
+      NavBar
+  },
   data () {
     return {
         isLogin: false,
@@ -52,16 +56,66 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../common/style/mixin';
 .home-header{
     position: fixed;
     left: 0;
     top: 0;
+    .wh(100%,50px);
+    .fj();
     line-height: 50px;
     padding: 0 15px;
     font-size: 15px;
+    .boxSizing();
     color: #fff;
+    z-index: 10000;
     .nbmenu2{
-        color: #1baeae
+        color: @primary;
+    }
+    &.active{
+        background: @primary;
+        .nbmenu2{
+            color: #fff;
+        }
+        .login{
+            color: #fff;
+        }
+    }
+
+    .header-search{
+        display: flex;
+        .wh(74%,20px);
+        line-height: 20px;
+        margin: 10px 0;
+        padding: 5px 0; 
+        color: #232326;
+        background: rgba(255,255,255,.7);
+        .borderRadius(20px);
+        .app-name{
+            padding: 0 10px;
+            .sc(20px,@primary);
+            font-weight: bold;
+            border-right: 1px solid #666;
+        }
+        .icon-search{
+            padding: 0 10px;
+            font-size: 17px;
+        }
+        .search-title{
+            .sc(12px,#666);
+            line-height: 21px;
+        }
+    }
+    .icon-iconyonghu{
+        .sc(22px,#fff);
+    }
+    .login{
+        color: @primary;
+        line-height: 52px;
+        .van-icon-manager-o{
+            font-size: 20px;
+            vertical-align: -3px;
+        }
     }
 }
 </style>
