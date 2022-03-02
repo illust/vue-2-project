@@ -14,7 +14,7 @@
           </router-link>
       </header>
       <nav-bar></nav-bar>
-      <swiper></swiper>
+      <swiper :list="swiperList"></swiper>
       <div class="category-list"></div>
       <div class="good">新品上线</div>
       <div class="good">热门商品</div>
@@ -26,14 +26,18 @@
 <script>
 import {Toast} from 'vant'
 import NavBar from '@/components/NavBar'
+import Swiper from '@/components/Swiper'
+import { getHome } from '../service/home'
 
 export default {
   name: 'home',
   components:{
-      NavBar
+      NavBar,
+      Swiper
   },
   data () {
     return {
+        swiperList: [],
         isLogin: false,
         headerScroll: false
     }
@@ -44,6 +48,10 @@ export default {
           message: '加载中...',
           forbidClick: true
       })
+    const { data } = await getHome()
+    console.log("data",data)
+    this.swiperList = data.carousels
+    console.log("swiperList",this.swiperList)
   },
   methods:{
       pageScroll(){

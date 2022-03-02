@@ -16,8 +16,12 @@ module.exports = {
 
         disableHostCheck: true,
 
-    }
+    },
 
+    css: {
+
+        extract: false  // 是否使用css分离插件 ExtractTextPlugin
+    }
 
 
 };
