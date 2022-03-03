@@ -63,9 +63,6 @@ export default {
                 .van-icon-shopping-cart-o{
                     margin: 0 auto;
                     margin-bottom: 2px;
-                      &::before{
-                        content:"\F0BB";
-                        }
                 }
             }
         }
