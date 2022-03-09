@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>
+  <div class="container">
 
   </div>
 </template>
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style  scoped>
-
+.container{
+  background-color: #000;
+}
 </style>

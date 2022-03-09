@@ -66,6 +66,14 @@ const routes = [
             index: 1
         },
         component: () => import('../views/ProductList.vue')
+    },
+    {
+        path: '/user',
+        name: 'user',
+        meta: {
+            index: 1
+        },
+        component: () => import('../views/User.vue')
     }
 ]
 
