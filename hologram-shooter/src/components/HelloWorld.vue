@@ -118,6 +118,7 @@ export default {
       ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
       this.drawCircularPlate(this.angles, ctx2);
       ctx3.clearRect(0, 0, canvas3.width, canvas3.height);
+      console.log("counArray",this.countArray);
       this.countArray.forEach((item, index) => {
         this.drawCounter(item, ctx3)
       })
