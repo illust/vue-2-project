@@ -8,7 +8,122 @@
       </div>
     </header>
     <nav-bar></nav-bar>
-    <div class="search-wrap"></div>
+    <div class="search-wrap">
+      <ul class="container">
+          <ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul>
+          <ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul><ul class="row">
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+            <li><input type="text" maxlength="1"></li>
+          </ul>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -78,4 +193,32 @@ export default {
     }
   }
 
+  .container{
+    .wh(auto,auto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:stretch;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    left: 7px;
+    right: 7px;
+    top: 80px;
+    bottom: 80px;
+    background-color:#2a2a70;
+    .row{
+      flex: 1;
+      display: flex;
+      margin: 2px 0 0 0;
+
+      input{
+        flex: 1;
+        .wh(30px,42px);
+        background-color: rgb(1, 168, 173);
+        font-size: 30px;
+        margin:0 2px 0 0;
+      }
+    }
+  }
 </style>

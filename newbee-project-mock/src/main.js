@@ -3,6 +3,7 @@ import App from './App.vue'
 import md5 from 'js-md5'
 import router from './router'
 // import store from './store'
+import 'lib-flexible/flexible.js' 
 
 import { Lazyload, Divider, Popup, Overlay, Loading, Dialog, ContactCard, Form, AddressEdit, AddressList, Field, CellGroup, Cell, SwipeCell, Icon, Stepper, Card, Checkbox, CheckboxGroup, Button, Swipe, SwipeItem, PullRefresh, List, Tab, Tabs, GoodsAction, GoodsActionIcon, GoodsActionButton, SubmitBar, Toast } from 'vant'
 
