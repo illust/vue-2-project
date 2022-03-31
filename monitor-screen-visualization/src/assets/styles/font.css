@@ -1,0 +1,23 @@
+@font-face {  
+    font-family: 'YouSheBiaoTiHei'; 
+    src: url('../font/youshebiaotihei.ttf'); 
+    font-weight: normal;  
+    font-style: normal;  
+  }
+
+
+  @font-face {  
+    font-family: 'SourceHanSansCN-Bold'; 
+    src: url('../font/SOURCEHANSANSCN-BOLD.OTF'); 
+    font-weight: normal;  
+    font-style: normal;  
+  }
+
+  @font-face {  
+    font-family: 'SourceHanSansCN-Medium'; 
+    src: url('../font/SOURCEHANSANSCN-MEDIUM.OTF'); 
+    font-weight: normal;  
+    font-style: normal;  
+  }
+
+
