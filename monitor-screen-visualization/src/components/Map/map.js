@@ -4,7 +4,7 @@ import TWEEN from '@tweenjs/tween.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator.js';
 
-import { CSM } from 'three/examples/jsm/csm/CSM.js';
+import { CSM } from 'three/examples/jsm/csm/CSM.js';    
 import { CSMHelper } from 'three/examples/jsm/csm/CSMHelper.js';
 
 
@@ -31,8 +31,8 @@ const params = {
 	orthographic: false,
 	fade: false,
 	far: 1000,
-	mode: 'practical',
-	// mode: 'uniform',
+	// mode: 'practical',
+	mode: 'uniform',
 	lightX: - 1,
 	lightY: - 1,
 	lightZ: - 1,
@@ -100,6 +100,7 @@ export default class lineMap {
         const ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
 		this.scene.add( ambientLight );
 
+        // 级联阴影贴图(Cascaded Shadow Map)
         this.csm = new CSM( {
             maxFar: params.far,
             cascades: 4,
@@ -148,7 +149,7 @@ export default class lineMap {
     loadMapData() {
         let _this = this;
 
-        let jsonData = require('./json/china.json')
+        let jsonData = require('./json/changsanjiao.json')
         
         _this.initMap(jsonData);
     }
@@ -204,8 +205,9 @@ export default class lineMap {
                     
                     multiPolygon.forEach((polygon) => {
                         const shape = new THREE.Shape();
-                        
+                        console.log('polygon',polygon);
                         for (let i = 0; i < polygon.length; i++) {
+                            
                             let [x, y] = projection(polygon[i]);
                             
                             if (i === 0) {
