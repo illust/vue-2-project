@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <SecondScreen msg="Welcome to Your Vue.js App"/>
+    <ThirdScreen msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import SecondScreen from './views/shanghaiScreen/SecondScreen.vue'
+// import SecondScreen from './views/shanghaiScreen/SecondScreen.vue'
+import ThirdScreen from './views/shanghaiScreen/ThirdScreen.vue'
 
 export default {
   name: 'App',
   components: {
-    SecondScreen
+    ThirdScreen
   }
 }
 </script>
