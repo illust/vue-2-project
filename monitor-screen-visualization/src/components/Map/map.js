@@ -93,7 +93,7 @@ export default class lineMap {
 		this.scene.add( this.lightProbe );
 
         // 相机 透视相机
-        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 5000);
+        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 100);
         this.camera.position.set(0, -40, 70);
         this.camera.lookAt(0, 0, 0);
 
@@ -217,7 +217,7 @@ export default class lineMap {
                         }
     
                         const extrudeSettings = {
-                            depth: 4,
+                            depth: 1,
                             bevelEnabled: true,
                             bevelSegments: 1,
                             bevelThickness: 0.2
@@ -409,12 +409,12 @@ export default class lineMap {
             color: 0x031837, 
             // specular: 0x111111,
             metalness: 0,
-            roughness: 1, 
+            roughness: 0.5, 
             // opacity: 0.2,
             opacity: 0.5,
             transparent: true,
         } );
-        const ground = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000, 1, 1 ), groundMaterial );
+        const ground = new THREE.Mesh( new THREE.PlaneGeometry( 60, 60, 1, 1 ), groundMaterial );
 		// ground.rotation.x = - Math.PI / 2;
         ground.position.z = 0
         // ground.castShadow = true;
