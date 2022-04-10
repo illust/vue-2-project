@@ -850,6 +850,7 @@
 </template>
 <script>
 export default {
+  name: 'first-screen',
   data() {
     return {
       constants: {},

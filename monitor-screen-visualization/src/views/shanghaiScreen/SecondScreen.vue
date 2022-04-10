@@ -9,7 +9,7 @@
 import Map from '@/components/Map'
 
 export default {
-  name: 'SecondScreen',
+  name: 'second-screen',
   components: { Map },
   data () {
     return {
