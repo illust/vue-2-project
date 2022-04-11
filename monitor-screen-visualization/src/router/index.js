@@ -6,8 +6,7 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'third-screen',
-        redirect: '/third-screen'
+        redirect: '/fouth-screen'
     },
     {
         path: '/first-screen',
@@ -23,6 +22,11 @@ const routes = [
         path: '/third-screen',
         name: 'third-screen',
         component: () => import('../views/shanghaiScreen/ThirdScreen.vue')
+    },
+    {
+        path: '/fouth-screen',
+        name: 'fouth-screen',
+        component: () => import('../views/shanghaiScreen/FouthScreen.vue')
     }
 ]
 
