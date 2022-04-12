@@ -28,8 +28,7 @@
           <div class="middle-left col-1">
               <div class="target-show">
                   <div class="target-title left-title">各业务类型交易规模</div>
-                  <div class="chart" ref="chart">
-                      <dv-charts :option="option" />
+                  <div class="chart">
                   </div>
               </div>
               <div class="target-show">
@@ -155,8 +154,9 @@ export default {
                 trigger: 'item'
             },
             legend: {
-                orient: 'horizontal',
-                left: 'center'
+                show: true,
+                left: '50%',
+                top: '50%'
             },
             series: [
                 {
