@@ -7,24 +7,30 @@
       <div class="main-target row-2">
           <div class="first-target col-1">
               <div class="decorate">2020年累计业务规模（亿元）</div>
-              <div class="number-flop" ref='group23'>
+              <div class="number-flop" ref='group1'>
                   <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="second-target col-2">
               <div class="decorate">本年业务规模（万元）</div>
-              <div class="number-flop"></div>
+              <div class="number-flop" ref='group2'>
+                  <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
+              </div>
           </div>
           <div class="third-target col-3">
               <div class="decorate">2020年累计业务收入（亿元）</div>
-              <div class="number-flop"></div>
+              <div class="number-flop" ref='group3'>
+                  <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
+              </div>
           </div>
       </div>
       <div class="middle-content row-3">
           <div class="middle-left col-1">
               <div class="target-show">
                   <div class="target-title left-title">各业务类型交易规模</div>
-                  <div class="chart"></div>
+                  <div class="chart" ref="chart">
+                      <dv-charts :option="option" />
+                  </div>
               </div>
               <div class="target-show">
                   <div class="target-title left-title">业务客群规模</div>
@@ -41,35 +47,45 @@
                       <div class="icon1"></div>
                       <div class="target-num-flop">
                           <div class="target-title-2">产融协同收入</div>
-                          <div class="number-flop"></div>
+                          <div class="middle-number-flop">
+                              <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                          </div>
                       </div>
                   </div>
                   <div class="target col-1">
                       <div class="icon2"></div>
                       <div class="target-num-flop">
                         <div class="target-title-2">融融协同规模</div>
-                        <div class="number-flop"></div>
+                        <div class="middle-number-flop">
+                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                        </div>
                       </div>
                   </div>
                   <div class="target-bigger col-1">
                       <div class="icon3"></div>
                       <div class="target-num-flop-1">
                         <div class="target-title-2">承保电网设备资产规模</div>
-                        <div class="number-flop"></div>
+                        <div class="middle-number-flop">
+                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                        </div>
                       </div>
                   </div>
                   <div class="target col-1">
                      <div class="icon4"></div>
                       <div class="target-num-flop">
                         <div class="target-title-2">管理资产总额</div>
-                        <div class="number-flop"></div>
+                        <div class="middle-number-flop">
+                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                        </div>
                       </div>
                   </div>
                   <div class="target col-1">
                      <div class="icon5"></div>
                       <div class="target-num-flop">
                         <div class="target-title-2">服务主业融资</div>
-                        <div class="number-flop"></div>
+                        <div class="middle-number-flop">
+                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                        </div>
                       </div>
                   </div>
               </div>
@@ -123,6 +139,46 @@ export default {
             fill: '#00f6ff',
             area: [800,121]
             }
+        },
+        configMiddle: {
+            number: [142],
+            content: '{nt}  亿元',
+            style: {
+            fontSize: 35,
+            fontWeight: 'bolder',
+            fill: '#ff9e2b',
+            area: [195,55]
+            }
+        },
+        option: {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'horizontal',
+                left: 'center'
+            },
+            series: [
+                {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    { value: 1048, name: 'Search Engine' },
+                    { value: 735, name: 'Direct' },
+                    { value: 580, name: 'Email' },
+                    { value: 484, name: 'Union Ads' },
+                    { value: 300, name: 'Video Ads' }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }   
+                    }
+                }
+            ]
         }
     }
  },
@@ -148,7 +204,9 @@ export default {
       var style = "width: 78px; height: 120px"
 
       // console.log("image",image);
-      this.backgroundImg(src,style,3)
+      this.backgroundImg(src,style,3,this.$refs.group1)
+      this.backgroundImg(src,style,3,this.$refs.group2)
+      this.backgroundImg(src,style,3,this.$refs.group3)
   
       var ctx = this.$refs['digital-flop'].renderer.ctx //.drawImage(image,0, 0, image.width, image.height) // 通过$refs可以获得子节点以及其数据和方法
 
@@ -156,7 +214,7 @@ export default {
       // ctx.drawImage(image)
     },
 
-    backgroundImg(src,style,num){
+    backgroundImg(src,style,num,el){
       var image = new Image()
       image.src = src
       image.style = style
@@ -165,23 +223,23 @@ export default {
       var divNode = document.createElement("div");
       divNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
 
-      this.$refs.group23.appendChild(image.cloneNode(true))
+      el.appendChild(image.cloneNode(true))
 
-      this.$refs.group23.appendChild(divNode)
+      el.appendChild(divNode)
       for(var i = 0; i < num; i++){
-        this.$refs.group23.appendChild(image.cloneNode(true))
+        el.appendChild(image.cloneNode(true))
       }
      
-      this.$refs.group23.appendChild(divNode.cloneNode(true))
+      el.appendChild(divNode.cloneNode(true))
 
       for(var j = 0; j < num; j++){
-        this.$refs.group23.appendChild(image.cloneNode(true))
+        el.appendChild(image.cloneNode(true))
       }
 
-      this.$refs.group23.appendChild(divNode.cloneNode(true))
+      el.appendChild(divNode.cloneNode(true))
 
       for(var k = 0; k < 2; k++){
-        this.$refs.group23.appendChild(image.cloneNode(true))
+        el.appendChild(image.cloneNode(true))
       }
     }
  },
@@ -189,6 +247,8 @@ export default {
     // this.render()
 
     this.drawNumBg()
+
+    console.log("this.$refs.chart",this.$refs.chart);
  }
 }
 </script>
@@ -394,6 +454,11 @@ export default {
     width: 1143px;
     height: 550px;
     background: url(./assets/jituanyewu/bg_big.png) 100% no-repeat;
+}
+
+.chart{
+    width: 820px;
+    height: 300px;
 }
 </style>
 
