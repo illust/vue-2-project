@@ -1,10 +1,11 @@
 body * {
     box-sizing: border-box;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
   }
   body {
     font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma,
       Arial, PingFang SC-Light, Microsoft YaHei;
+      margin:0px !important;
   }
   button {
     margin: 0;
