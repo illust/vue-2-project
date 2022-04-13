@@ -11,22 +11,22 @@ const routes = [
     {
         path: '/first-screen',
         name: 'first-screen',
-        component: () => import('../views/shanghaiScreen/FirstScreen.vue')
+        component: () => import(/* webpackChunkName:"first-scr" */'../views/shanghaiScreen/FirstScreen.vue')
     },
     {
         path: '/second-screen',
         name: 'second-screen',
-        component: () => import('../views/shanghaiScreen/SecondScreen.vue')
+        component: () => import(/* webpackChunkName:"second-scr" */'../views/shanghaiScreen/SecondScreen.vue')
     },
     {
         path: '/third-screen',
         name: 'third-screen',
-        component: () => import('../views/shanghaiScreen/ThirdScreen.vue')
+        component: () => import(/* webpackChunkName:"third-scr" */'../views/shanghaiScreen/ThirdScreen.vue')
     },
     {
         path: '/fouth-screen',
         name: 'fouth-screen',
-        component: () => import('../views/shanghaiScreen/FouthScreen.vue')
+        component: () => import(/* webpackChunkName:"fouth-scr" */'../views/shanghaiScreen/FouthScreen.vue')
     }
 ]
 
