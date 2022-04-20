@@ -2,14 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import dataV from '@jiaminghi/data-view'
-import DigitalFlopDemo from './components/DigitalFlopDemo.vue'
+// import DigitalFlopDemo from './components/DigitalFlopDemo.vue'
+import NumberFlop from './components/NumberFlop'
 
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 
-Vue.component(DigitalFlopDemo.name,DigitalFlopDemo)
+Vue.component(NumberFlop.name,NumberFlop)
 
 Vue.use(dataV)
-// Vue.use(echarts)
 
 Vue.prototype.$echarts = echarts
 

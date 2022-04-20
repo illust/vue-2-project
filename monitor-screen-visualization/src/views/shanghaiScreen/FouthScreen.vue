@@ -8,19 +8,19 @@
           <div class="first-target col-1">
               <div class="decorate">2020年累计业务规模（亿元）</div>
               <div class="number-flop" ref='group1'>
-                  <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="second-target col-2">
               <div class="decorate">本年业务规模（万元）</div>
               <div class="number-flop" ref='group2'>
-                  <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="third-target col-3">
               <div class="decorate">2020年累计业务收入（亿元）</div>
               <div class="number-flop" ref='group3'>
-                  <digital-flop-demo ref='digital-flop' :config="config" style="margin:10px -815px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
       </div>
@@ -28,12 +28,13 @@
           <div class="middle-left col-1">
               <div class="target-show">
                   <div class="target-title left-title">各业务类型交易规模</div>
-                  <div class="chart">
+                  <div class="chart" id="myChart1" ref="chart1" style="width:800px;height:300px">
                   </div>
               </div>
               <div class="target-show">
                   <div class="target-title left-title">业务客群规模</div>
-                  <div class="chart"></div>
+                  <div class="chart" id="myChart2" ref="chart2" style="width:800px;height:300px">
+                  </div>
               </div>
               <div class="target-show">
                   <div class="target-title left-title">累计服务客户数据</div>
@@ -47,7 +48,7 @@
                       <div class="target-num-flop">
                           <div class="target-title-2">产融协同收入</div>
                           <div class="middle-number-flop">
-                              <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                              <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                           </div>
                       </div>
                   </div>
@@ -56,7 +57,7 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">融融协同规模</div>
                         <div class="middle-number-flop">
-                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -65,7 +66,7 @@
                       <div class="target-num-flop-1">
                         <div class="target-title-2">承保电网设备资产规模</div>
                         <div class="middle-number-flop">
-                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -74,7 +75,7 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">管理资产总额</div>
                         <div class="middle-number-flop">
-                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -83,12 +84,14 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">服务主业融资</div>
                         <div class="middle-number-flop">
-                            <digital-flop-demo ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
               </div>
-              <div class="center-map row-2"></div>
+              <div class="center-map row-2">
+                  <ScreenMap/>
+              </div>
           </div>
           <div class="middle-right col-3">
               <div class="target-show">
@@ -108,7 +111,8 @@
       <div class="footer-content row-4">
           <div class="target-show-1 col-1">
                 <div class="target-title-1">2020年业务规模</div>
-                <div class="chart"></div>
+                <div class="chart" id="myChart3" ref="chart3" style="width:1000px;height:460px">
+                </div>
           </div>
           <div class="target-show-1 col-2">
                 <div class="target-title-1">2020年营业收入</div>
@@ -123,8 +127,13 @@
 </template>
 
 <script>
+// import ScreenHeader from '../../components/ScreenHeader'
+import ScreenMap from '../../components/ScreenMap'
 export default {
   name:'fouth-screen',
+  components: {
+      ScreenMap
+  },
   data () {
     return {
         config: {
@@ -133,20 +142,22 @@ export default {
             content: '{nt}',
             formatter: this.formatter,
             style: {
-            fontSize: 100,
-            fontWeight: 'bolder',
-            fill: '#00f6ff',
-            area: [800,121]
-            }
+                fontSize: 100,
+                fontWeight: 'bolder',
+                fill: '#00f6ff',
+                area: [800,121]
+            },
+            imgSrc: require("../../assets/number-bg.png"),
+            imgStyle: "width: 78px; height: 120px"
         },
         configMiddle: {
             number: [142],
             content: '{nt}  亿元',
             style: {
-            fontSize: 35,
-            fontWeight: 'bolder',
-            fill: '#ff9e2b',
-            area: [195,55]
+                fontSize: 35,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [195,55]
             }
         },
         option: {
@@ -191,7 +202,7 @@ export default {
         while (numbers.length) segs2.push(numbers.splice(0, 3).join(''))    
         segs = segs2.join(',').split('').reverse().join('') + segs1.split('').reverse().join('')
         segs = segs.split("").join(String.fromCharCode(8201))
-        console.log("segs",segs);
+
         return segs
       },
     render(){
@@ -199,22 +210,16 @@ export default {
     },
     drawNumBg(){
  
-    //   var src = require("@/assets/number-bg.png")
       var src = require("../../assets/number-bg.png")
       var style = "width: 78px; height: 120px"
 
-      // console.log("image",image);
       this.backgroundImg(src,style,3,this.$refs.group1)
       this.backgroundImg(src,style,3,this.$refs.group2)
       this.backgroundImg(src,style,3,this.$refs.group3)
   
-      var ctx = this.$refs['digital-flop'].renderer.ctx //.drawImage(image,0, 0, image.width, image.height) // 通过$refs可以获得子节点以及其数据和方法
-
-      console.log("ctx",ctx);
-      // ctx.drawImage(image)
     },
 
-    backgroundImg(src,style,num,el){
+    backgroundImg (src,style,num,el) {
       var image = new Image()
       image.src = src
       image.style = style
@@ -241,14 +246,139 @@ export default {
       for(var k = 0; k < 2; k++){
         el.appendChild(image.cloneNode(true))
       }
+    },
+
+    setMyChartOne(){
+        const chart = this.$refs.chart1
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                title: {
+                    text: 'Referer of a Website',
+                    subtext: 'Fake Data',
+                    left: 'center'
+                  },
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [
+                            { value: 1048, name: 'Search Engine' },
+                            { value: 735, name: 'Direct' },
+                            { value: 580, name: 'Email' },
+                            { value: 484, name: 'Union Ads' },
+                            { value: 300, name: 'Video Ads' }
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartTwo(){
+        const chart = this.$refs.chart2
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [
+                    {
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            { value: 1048, name: 'Search Engine' },
+                            { value: 735, name: 'Direct' },
+                            { value: 580, name: 'Email' },
+                            { value: 484, name: 'Union Ads' },
+                            { value: 300, name: 'Video Ads' }
+                        ]
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartThree(){
+        const chart = this.$refs.chart3
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
     }
  },
  mounted(){
     // this.render()
 
-    this.drawNumBg()
+    // this.drawNumBg()
+    this.setMyChartOne()
+    this.setMyChartTwo()
+    this.setMyChartThree()
 
-    console.log("this.$refs.chart",this.$refs.chart);
+
+    // console.log("this.$refs.chart",this.$refs.chart);
  }
 }
 </script>
@@ -389,6 +519,12 @@ export default {
     margin: 10px 20px 0 20px;   
 }
 
+.center-map{
+    width: 1748px;
+    height: 1000px;
+    margin: 0 20px 0 20px
+}
+
 .target-num-flop{
     width: 180px;
     margin-top: 13px;
@@ -457,8 +593,9 @@ export default {
 }
 
 .chart{
-    width: 820px;
+    width: 800px;
     height: 300px;
+    margin: auto;
 }
 </style>
 

@@ -27,6 +27,11 @@ const routes = [
         path: '/fouth-screen',
         name: 'fouth-screen',
         component: () => import(/* webpackChunkName:"fouth-scr" */'../views/shanghaiScreen/FouthScreen.vue')
+    },
+    {
+        path: '/fifth-screen',
+        name: 'fifth-screen',
+        component: () => import(/* webpackChunkName:"fifth-scr" */'../views/shanghaiScreen/FifthScreen.vue')
     }
 ]
 
