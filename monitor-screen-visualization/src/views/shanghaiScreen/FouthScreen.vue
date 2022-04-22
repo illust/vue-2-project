@@ -111,16 +111,15 @@
       <div class="footer-content row-4">
           <div class="target-show-1 col-1">
                 <div class="target-title-1">2020年业务规模</div>
-                <div class="chart" id="myChart3" ref="chart3" style="width:1000px;height:460px">
-                </div>
+                <div class="chart" id="myChart3" ref="chart3" style="width:1000px;height:460px"></div>
           </div>
           <div class="target-show-1 col-2">
                 <div class="target-title-1">2020年营业收入</div>
-                <div class="chart"></div>
+                <div class="chart" id="myChart4" ref="chart4" style="width:1000px;height:460px"></div>
           </div>
           <div class="target-show-1 col-3">
                 <div class="target-title-1">2020年业务利润</div>
-                <div class="chart"></div>
+                <div class="chart" id="myChart5" ref="chart5" style="width:1000px;height:460px"></div>
           </div>
       </div>
   </div>
@@ -148,7 +147,7 @@ export default {
                 area: [800,121]
             },
             imgSrc: require("../../assets/number-bg.png"),
-            imgStyle: "width: 78px; height: 120px"
+            imgStyle: "width: 78px; height: 105px"
         },
         configMiddle: {
             number: [142],
@@ -367,6 +366,58 @@ export default {
                 thisChart.resize()
             })
         }
+    },
+
+    setMyChartFour(){
+        const chart = this.$refs.chart4
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartFive(){
+        const chart = this.$refs.chart5
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
     }
  },
  mounted(){
@@ -376,6 +427,8 @@ export default {
     this.setMyChartOne()
     this.setMyChartTwo()
     this.setMyChartThree()
+    this.setMyChartFour()
+    this.setMyChartFive()
 
 
     // console.log("this.$refs.chart",this.$refs.chart);

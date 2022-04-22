@@ -204,9 +204,7 @@ export default {
       const {mergedConfig } = this
       const {imgSrc, imgStyle}= mergedConfig
       const el =  this.$refs['flop-background']
-      console.log("el",el);
-      console.log("imgSrc",imgSrc);
-      console.log("imgStyle",imgStyle);
+
       if(imgSrc && imgStyle){
         const num = 3
         var image = new Image()
@@ -259,7 +257,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: -140px;
+    margin-top: -130px;
   }
 }
 </style>

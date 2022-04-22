@@ -1,150 +1,179 @@
-<!--  
 <template>
-  <div class="map-container">
-
-  </div>
+	<div ref="myChart" id="myChart" class="screen-map"></div>
 </template>
--->
 <script>
+import gzData from '../../assets/json/data.json'
 export default {
-  render: function(createElement) {
-    return createElement("div", {
-      attrs: {
-        id: "main",
-      },
-      style: {
-        height: "450px",
-        width:'600px',
-        margin: 'auto'
-      },
-    });
-  },
   name: "screen-map",
   data() {
     return {
-      dataList: [
-        { name: "南海诸岛" },
-        { ename: "beijing", name: "北京"},
-        { ename: "tianjin", name: "天津" },
-        { ename: "shanghai", name: "上海" },
-        { ename: "chongqing", name: "重庆" },
-        { ename: "hebei", name: "河北" },
-        { ename: "henan", name: "河南"},
-        { ename: "yunnan", name: "云南" },
-        { ename: "liaoning", name: "辽宁" },
-        { ename: "heilongjiang", name: "黑龙江" },
-        { ename: "hunan", name: "湖南"},
-        { ename: "anhui", name: "安徽" },
-        { ename: "shandong", name: "山东" },
-        { ename: "xinjiang", name: "新疆" },
-        { ename: "jiangsu", name: "江苏" },
-        { ename: "zhejiang", name: "浙江" },
-        { ename: "jiangxi", name: "江西" },
-        { ename: "hubei", name: "湖北" },
-        { ename: "guangxi", name: "广西"},
-        { ename: "gansu", name: "甘肃" },
-        { ename: "shanxi", name: "山西" },
-        { ename: "neimenggu", name: "内蒙古" },
-        { ename: "shanxi1", name: "陕西" },
-        { ename: "jilin", name: "吉林" },
-        { ename: "fujian", name: "福建" },
-        { ename: "guizhou", name: "贵州" },
-        { ename: "guangdong", name: "广东" },
-        { ename: "qinghai", name: "青海" },
-        { ename: "xizang", name: "西藏" },
-        { ename: "sichuan", name: "四川" },
-        { ename: "ningxia", name: "宁夏" },
-        { ename: "hainan", name: "海南" },
-        { name: "台湾"},
-        { ename: "xianggang", name: "香港" },
-        { ename: "aomen", name: "澳门" },
-      ],
+      mTime: '',
+			charts: '',
+			index: -1,
+			option: {
+				tooltip: { // 窗口外框
+					backgroundColor: 'rgba(0,0,0,0)',
+					trigger: 'item',
+				},
+				// legend: { // 注释掉有文字
+				// 	show: false,
+				// },
+				series: [{
+					tooltip: { // 显示的窗口
+						trigger: 'item',
+						formatter: function (item) {
+							var tipHtml = '';
+							tipHtml = `<div style="padding: .6rem .8rem;font-size: .325rem;color:#fff;border-radius:10%;background: linear-gradient(#cccecf, #cccecf) left top,
+									linear-gradient(#cccecf, #cccecf) left top,
+									linear-gradient(#cccecf, #cccecf) right top,
+									linear-gradient(#cccecf, #cccecf) right top,
+									linear-gradient(#cccecf, #cccecf) left bottom,
+									linear-gradient(#cccecf, #cccecf) left bottom,
+									linear-gradient(#cccecf, #cccecf) right bottom,
+									linear-gradient(#cccecf, #cccecf) right bottom;
+							background-repeat: no-repeat;
+							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">5家</span> </div>`;
+							return tipHtml;
+						},
+						borderWidth: 0
+					},
+					name: '广东省数据',
+					type: 'map',
+					map: '广东', // 自定义扩展图表类型
+					zoom: 0.65, // 缩放
+					showLegendSymbol: true,
+					label: { // 文字
+						show: true,
+						color: '#fff',
+						fontSize: 10
+					},
+					itemStyle: { // 地图样式
+						borderColor: 'rgba(147, 235, 248, 1)',
+						borderWidth: 1,
+						areaColor: {
+							type: 'radial',
+							x: 0.5,
+							y: 0.5,
+							r: 0.8,
+							colorStops: [{
+								offset: 0,
+								color: 'rgba(147, 235, 248, 0)' // 0% 处的颜色
+							}, {
+								offset: 1,
+								color: 'rgba(147, 235, 248, .2)' // 100% 处的颜色
+							}],
+							globalCoord: false // 缺省为 false
+						},
+						shadowColor: 'rgba(128, 217, 248, 1)',
+						// shadowColor: 'rgba(255, 255, 255, 1)',
+						shadowOffsetX: -2,
+						shadowOffsetY: 2,
+						shadowBlur: 10
+					},
+					emphasis: { // 鼠标移入动态的时候显示的默认样式
+						itemStyle: {
+							areaColor: '#4adcf0',
+							borderColor: '#404a59',
+							borderWidth: 1
+						},
+						label: { // 文字
+							show: true,
+							color: '#fff',
+							fontSize: 10
+						},
+					},
+					layoutCenter: ['50%', '50%'],
+					layoutSize: '150%',
+					markPoint: {
+						symbol: 'none'
+					},
+					data: '',
+				}],
+			}
     };
   },
   methods: {
-    initEchart() {
-      let dataList = this.dataList;
-      for(let i = 0; i < dataList.length; i++){
-        dataList[i].value = Math.ceil(Math.random() * 1000 - 1);
-      }
-      const _this = this;
-      var myChart = this.$echarts.init(document.getElementById("main"));
-      var option = {
-        tooltip: {
-          //数据格式化
-          formatter: function(params) {
-            return (
-              params.seriesName + "<br />" + params.name + "：" + params.value
-            );
-          },
-        },
-        visualMap: {
-          min: 0,
-          max: 1000,
-          left: "left",
-          top: "bottom",
-          text: ["高", "低"], //取值范围的文字
-          inRange: {
-            color: ["#e0ffff", "blue"], //取值范围的颜色
-          },
-          show: true, //图注
-        },
-        geo: {
-          map: "china", //引入地图数据
-          roam: false, //不开启缩放和平移
-          zoom: 1, //视角缩放比例
-          label: {
-            normal: {
-              show: true,
-              fontSize: "10",
-              color: "rgba(0,0,0,0.7)",
-            },
-          },
-          itemStyle: {
-            normal: {
-              borderColor: "rgba(0, 0, 0, 0.2)",
-            },
-            emphasis: { //高亮的显示设置
-              areaColor: "skyblue", //鼠标选择区域颜色
-              shadowOffsetX: 0,
-              shadowOffsetY: 0,
-              shadowBlur: 20,
-              borderWidth: 0,
-              shadowColor: "rgba(0, 0, 0, 0.5)",
-            },
-          },
-        },
-        // 鼠标悬浮提示框
-        series: [
-          {
-            name: "省份",
-            type: "map",
-            geoIndex: 0,
-            data: this.dataList,
-          },
-        ],
-      };
-      myChart.setOption(option);
-      myChart.on("click", function(params) {
-        if(!params.data.ename){
-          alert('暂无' + params.name + '地图数据');
-          return;
-        }
-        _this.$router.push({
-          path: "/province",
-          query: { provinceName: params.data.ename, province: params.name },
-        });
-      });
-    },
+    setMyEchart () {
+			const myChart = this.$refs.myChart; // 通过ref获取到DOM节点
+			if (myChart) {
+				const thisChart = this.$echarts.init(myChart); // 利用原型调取Echarts的初始化方法
+				this.charts = thisChart;
+				this.mapActive();
+				this.mouseEvents();
+				const option = this.option; // {}内写需要图表的各种配置，可以在官方案例中修改完毕后复制过来
+				thisChart.setOption(option); // 将编写好的配置项挂载到Echarts上
+				window.addEventListener('resize', function () {
+					thisChart.resize(); // 页面大小变化后Echa	rts也更改大小
+				});
+			}
+		},
+		mouseEvents () {
+			// 鼠标划入
+			this.charts.on('mouseover', () => {
+				// 停止定时器，清除之前的高亮
+				clearInterval(this.mTime);
+				this.mTime = '';
+				console.log(this.mTime);
+				this.charts.dispatchAction({
+					type: 'downplay',
+					seriesIndex: 0,
+					dataIndex: this.index
+				});
+			});
+			// 鼠标划出重新定时器开始
+			this.charts.on('mouseout', () => {
+				this.mapActive();
+			});
+		},
+		// 高亮轮播
+		mapActive () {
+			const dataLength = gzData.features.length;
+			// 用定时器控制高亮
+			this.mTime = setInterval(() => {
+				// 清除之前的高亮
+				this.charts.dispatchAction({
+					type: 'downplay',
+					seriesIndex: 0,
+					dataIndex: this.index
+				});
+				this.index++;
+				// 当前下标高亮
+				this.charts.dispatchAction({
+					type: 'highlight',
+					seriesIndex: 0,
+					dataIndex: this.index
+				});
+				this.charts.dispatchAction({
+					type: 'showTip',
+					seriesIndex: 0,
+					dataIndex: this.index
+				});
+				if (this.index > dataLength) {
+					this.index = 0;
+				}
+			}, 2000);
+		},
+		getJson () {
+			this.option.series[0].data = gzData.features.map((item) => { // 显示窗口的数据转换
+				return {
+					value: (Math.random() * 1000).toFixed(2),
+					name: item.properties.name
+				};
+			});
+		}
   },
   mounted() {
-    this.initEchart();
+    this.setMyEchart(); // 页面挂载完成后执行
   },
+  created(){
+    this.$echarts.registerMap('广东', gzData);
+	this.getJson();
+  }
 };
 </script>
 
 <style  scoped>
-.map-container{
+.screen-map{
     width: 100%;
     height: 100%;
 }
