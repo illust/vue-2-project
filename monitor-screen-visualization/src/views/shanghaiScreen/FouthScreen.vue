@@ -1,6 +1,7 @@
 <!-- 集团业务发展 -->
 <template>
   <div class="container">
+    <button @click="goNextPage"></button>
       <header class="title row-1">
         <img src="./assets/jituanyewu/title_top.png" alt="">
       </header>
@@ -193,6 +194,9 @@ export default {
     }
  },
  methods:{
+     goNextPage(){
+          this.$router.push("/fifth-screen");
+      },
      formatter (number) {
         const numbers = number.toString().split('').reverse()
         const segs1 = numbers.splice(0, 3).join('')
@@ -437,6 +441,13 @@ export default {
 </script>
 
 <style scoped lang='css'>
+button{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 100;
+}
 .container{
     background: url(./assets/jituanyewu/bg_page.png) 100% no-repeat;
     width: 3840px;

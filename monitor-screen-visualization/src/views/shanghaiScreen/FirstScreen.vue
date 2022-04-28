@@ -1,5 +1,7 @@
+<!-- 英大集团 -->
 <template>
   <div class="page flex-col">
+    <button @click="goNextPage"></button>
     <div class="box1 flex-col">
       <div class="layer1 flex-col">
         <div class="group1 flex-row">
@@ -856,12 +858,22 @@ export default {
       constants: {},
     };
   },
-  methods: {},
+  methods: {
+    goNextPage(){
+          this.$router.push("/second-screen");
+      }
+  },
 };
 </script>
-
 <style src="./common.css" />
 <style scoped>
+button{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 100;
+}
 @import '../../assets/styles/font.css';
 
 .page {
