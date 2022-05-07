@@ -37,15 +37,165 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: ['2018', '2019', '2020']
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',                    
+                    axisLine:{
+                      show: true,
+                      color: 'red'
+                    },
+                    splitLine:{
+                      show: false
+                    }
                 },
                 series: [
                     {
-                    data: [120, 200, 150, 80, 70, 110, 130],
-                    type: 'bar'
+                    data: [140, 180, 240],
+                    type: 'line',
+                    areaStyle:{
+                      color: '#a48933'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartSecond(){
+        const chart = this.$refs.chart2
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020']
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine:{
+                      show: false
+                    },
+                    axisLine:{
+                      color: 'green'
+                    }
+                },
+                series: [
+                    {
+                    data: [382, 764, 1498],
+                    type: 'bar',
+                    itemStyle:{
+                      color: '#E07E3C'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartThird(){
+        const chart = this.$refs.chart3
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020']
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine:{
+                      show: false
+                    },
+                    axisLine:{
+                      color: 'blue'
+                    }
+                },
+                series: [
+                    {
+                    data: [0.82, 1.01, 1.36],
+                    type: 'line',
+                    areaStyle:{
+                      color: '#00ae9d'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartFouth(){
+        const chart = this.$refs.chart4
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020']
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine:{
+                      show: false
+                    },
+                    axisLine:{
+                      color: 'green'
+                    }
+                },
+                series: [
+                    {
+                    data: [382, 764, 1498],
+                    type: 'bar',
+                    itemStyle:{
+                      color: '#86F95D'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartFifth(){
+        const chart = this.$refs.chart5
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020']
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine:{
+                      show: false
+                    },
+                    axisLine:{
+                      color: 'green'
+                    }
+                },
+                series: [
+                    {
+                    data: [382, 764, 1498],
+                    type: 'bar',
+                    itemStyle:{
+                      color: '#E06554'
+                    }
                     }
                 ]
             }
@@ -59,6 +209,10 @@ export default {
 
   mounted(){
     this.setMyChartFirst()
+    this.setMyChartSecond()
+    this.setMyChartThird()
+    this.setMyChartFouth()
+    this.setMyChartFifth()
   }
 };
 </script>
