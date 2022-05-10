@@ -62,7 +62,7 @@ button{
     justify-content: space-between
 }
 
-.subtitle{
+/* .subtitle{
   background: url(./assets/ydjt_one/ydjt_one/subtitle.png) 100% no-repeat;
   width: 3094px;
   height: 120px;
@@ -99,5 +99,5 @@ button{
 
   margin-left: 20px;
   margin-top: 10px;
-}
+} */
 </style>
