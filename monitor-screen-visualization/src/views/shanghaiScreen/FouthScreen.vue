@@ -3,7 +3,7 @@
   <div class="container">
     <button @click="goNextPage"></button>
       <header class="title row-1">
-        <img src="./assets/jituanyewu/title_top.png" alt="">
+        <img :src="headerImg" alt="">
       </header>
       <div class="main-target row-2">
           <div class="first-target col-1">
@@ -136,6 +136,7 @@ export default {
   },
   data () {
     return {
+        headerImg: require("./assets/jituanyewu/title_top.png"),
         config: {
             number: [1002065],
             toFixed: 2,
