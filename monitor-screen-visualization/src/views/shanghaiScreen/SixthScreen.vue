@@ -3,7 +3,7 @@
   <div class="container">
     <button @click="goNextPage"></button>
     <header class="title row-1">
-      <img src="./assets/csj2/header.png" alt="">
+      <img :src="headerImg" alt="">
     </header>
     <div class="main-target row-2">
         <div class="first-target col-1">
@@ -34,7 +34,7 @@
 保险板块业务收入66.35亿元，资产管理板块业务收
 入5.49亿元，智能制造板块业务收入41.28亿元。</div>
           <div class="middle-left-title-2"></div>
-          <div class="chart"></div>
+          <div class="chart" ref="chart" style="width:850px;height:400px;"></div>
         </div>
       </div>
       <div class="map"></div>
@@ -73,6 +73,7 @@
 export default {
   data() {
     return {
+      headerImg: require("./assets/csj2/header.png"),
       config: {
             number: [1002065],
             toFixed: 2,
@@ -145,8 +146,58 @@ export default {
       for(var k = 0; k < 2; k++){
         el.appendChild(image.cloneNode(true))
       }
+    },
+
+    setMyChart(){
+        const chart = this.$refs.chart
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                title: {
+                    text: 'Referer of a Website',
+                    subtext: 'Fake Data',
+                    left: 'center'
+                  },
+                tooltip: {
+                    trigger: 'item'
+                },
+                // legend: {
+                //     orient: 'vertical',
+                //     left: 'left'
+                // },
+                series: [
+                    {
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [
+                            { value: 1048, name: 'Search Engine' },
+                            { value: 735, name: 'Direct' },
+                            { value: 580, name: 'Email' },
+                            { value: 484, name: 'Union Ads' },
+                            { value: 300, name: 'Video Ads' }
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
     }
   },
+
+  mounted(){
+    this.setMyChart()
+  }
 };
 </script>
 <style src="./common.css" />
