@@ -3,11 +3,11 @@
   <div class="container">
     <button @click="goNextPage"></button>
     <div class="first-row">
-      <div class="chart one" ref="chart1" style="width:734px;height:738px"></div>
-      <div class="chart two" ref="chart2"></div>
-      <div class="chart three" ref="chart3"></div>
-      <div class="chart four" ref="chart4"></div>
-      <div class="chart five" ref="chart5"></div>
+      <div class="chart one" ref="chart1" style="width:730px;height:738px"></div>
+      <div class="chart two" ref="chart2" style="width:720px;height:738px"></div>
+      <div class="chart three" ref="chart3" style="width:730px;height:738px"></div>
+      <div class="chart four" ref="chart4" style="width:720px;height:738px"></div>
+      <div class="chart five" ref="chart5" style="width:720px;height:738px"></div>
     </div>
     <div class="second-row">
       <div class="text first"><span>产融协同收入</span></div>
@@ -37,7 +37,12 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020']
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
                 },
                 yAxis: {
                     type: 'value',                    
@@ -47,6 +52,11 @@ export default {
                     },
                     splitLine:{
                       show: false
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
                     }
                 },
                 series: [
@@ -73,7 +83,12 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020']
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
                 },
                 yAxis: {
                     type: 'value',
@@ -82,6 +97,11 @@ export default {
                     },
                     axisLine:{
                       color: 'green'
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
                     }
                 },
                 series: [
@@ -108,7 +128,12 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020']
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
                 },
                 yAxis: {
                     type: 'value',
@@ -117,6 +142,11 @@ export default {
                     },
                     axisLine:{
                       color: 'blue'
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
                     }
                 },
                 series: [
@@ -143,7 +173,12 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020']
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
                 },
                 yAxis: {
                     type: 'value',
@@ -152,6 +187,11 @@ export default {
                     },
                     axisLine:{
                       color: 'green'
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
                     }
                 },
                 series: [
@@ -178,7 +218,12 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020']
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
                 },
                 yAxis: {
                     type: 'value',
@@ -187,6 +232,11 @@ export default {
                     },
                     axisLine:{
                       color: 'green'
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
                     }
                 },
                 series: [
