@@ -7,7 +7,7 @@
       </header>
       <div class="main-target row-2">
           <div class="first-target col-1">
-              <div class="decorate">2020年累计业务规模（亿元）</div>
+              <div class="decorate">2021年累计业务规模（亿元）</div>
               <div class="number-flop" ref='group1'>
                   <number-flop ref='digital-flop' :config="config"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
@@ -19,7 +19,7 @@
               </div>
           </div>
           <div class="third-target col-3">
-              <div class="decorate">2020年累计业务收入（亿元）</div>
+              <div class="decorate">2021年累计业务收入（亿元）</div>
               <div class="number-flop" ref='group3'>
                   <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
@@ -39,7 +39,18 @@
               </div>
               <div class="target-show">
                   <div class="target-title left-title">累计服务客户数据</div>
-                  <div class="chart"></div>
+                  <div class="customerNum">
+                      <div class="personal">
+                          <img :src="personalImg" alt="">
+                          <span class="personalText">个人</span>
+                          <span class="personalNum">138万</span>
+                      </div>
+                      <div class="enterprise">
+                          <img :src="enterpriseImg" alt="">
+                          <span class="enterpriseText">企业</span>
+                          <span class="enterpriseNum">146万</span>
+                      </div>
+                  </div>
               </div>
           </div>
           <div class="middle-center col-2">
@@ -97,15 +108,22 @@
           <div class="middle-right col-3">
               <div class="target-show">
                   <div class="target-title right-title">特色产品累计规模</div>
-                  <div class="chart"></div>
+                  <div class="specialProduct">
+                      <div class="product">
+                          <img :src="productImg" alt="">
+                          <span class="productText">产品总数</span>
+                          <span class="productNum">173款</span>
+                      </div>
+                      <div class="productList"></div>
+                  </div>
               </div>
               <div class="target-show">
                   <div class="target-title right-title">管理资产总额</div>
-                  <div class="chart"></div>
+                  <div class="assetsTotal" ref="chart6" style="width:900px;height:300px"></div>
               </div>
               <div class="target-show">
                   <div class="target-title right-title">营业收入</div>
-                  <div class="chart"></div>
+                  <div class="income" ref="chart7" style="width:900px;height:300px"></div>
               </div>
           </div>
       </div>
@@ -137,19 +155,22 @@ export default {
   data () {
     return {
         headerImg: require("./assets/jituanyewu/title_top.png"),
+        personalImg: require("./assets/jituanyewu/icon_sixth.jpg"),
+        enterpriseImg: require("./assets/jituanyewu/icon_seventh.jpg"),
+        productImg: require("./assets/jituanyewu/icon_eighth.jpg"),
         config: {
             number: [1002065],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
             style: {
-                fontSize: 100,
-                fontWeight: 'bolder',
-                fill: '#00f6ff',
+                fontSize: 90,
+                fontWeight: 'bold',
+                fill: '#ff9e2b',
                 area: [800,121]
             },
             imgSrc: require("../../assets/number-bg.png"),
-            imgStyle: "width: 78px; height: 105px"
+            imgStyle: "width: 68px; height: 95px"
         },
         configMiddle: {
             number: [142],
@@ -423,6 +444,97 @@ export default {
                 thisChart.resize()
             })
         }
+    },
+
+    setMyChartSix(){
+        const chart = this.$refs.chart6
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
+                },
+                yAxis: {
+                    type: 'value',                    
+                    axisLine:{
+                      show: true,
+                      color: 'red'
+                    },
+                    splitLine:{
+                      show: false
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
+                },
+                series: [
+                    {
+                    data: [140, 180, 240],
+                    type: 'line',
+                    areaStyle:{
+                      color: '#a48933'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
+    },
+
+    setMyChartSeven(){
+        const chart = this.$refs.chart7
+        if(chart){
+            const thisChart = this.$echarts.init(chart)
+            const option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2018', '2019', '2020'],
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine:{
+                      show: false
+                    },
+                    axisLine:{
+                      color: 'green'
+                    },
+                    axisLabel:{
+                      color: '#fff',
+                      fontWeight: 'bolder',
+                      fontSize: 20
+                    }
+                },
+                series: [
+                    {
+                    data: [382, 764, 1498],
+                    type: 'bar',
+                    itemStyle:{
+                      color: '#E07E3C'
+                    }
+                    }
+                ]
+            }
+            thisChart.setOption(option)
+            window.addEventListener("resize",function(){
+                thisChart.resize()
+            })
+        }
     }
  },
  mounted(){
@@ -434,6 +546,8 @@ export default {
     this.setMyChartThree()
     this.setMyChartFour()
     this.setMyChartFive()
+    this.setMyChartSix()
+    this.setMyChartSeven()
 
 
     // console.log("this.$refs.chart",this.$refs.chart);
@@ -661,6 +775,74 @@ button{
     width: 800px;
     height: 300px;
     margin: auto;
+}
+
+.customerNum{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.personal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personalText{
+    color:aliceblue;
+    margin: 5px 0 5px 0;
+}
+
+.personalNum{
+    color: #ff9e2b;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 5px 0 5px 0;
+}
+
+
+.enterprise{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enterpriseText{
+    color:aliceblue;
+    margin: 5px 0 5px 0;
+}
+
+.enterpriseNum{
+    color: #ff9e2b;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 5px 0 5px 0;
+}
+
+.specialProduct{
+    display: flex;
+    margin: 20px 0 10px 65px;
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productText{
+    color:aliceblue;
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 10px 0 5px 0;
+}
+
+.productNum{
+    color:aquamarine;
+    font-size: 35px;
+    font-weight: bolder;
+    margin: 5px 0 10px 0;
 }
 </style>
 
