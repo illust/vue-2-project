@@ -9,19 +9,19 @@
         <div class="first-target col-1">
               <div class="decorate1"></div>
               <div class="number-flop" ref='group1'>
-                  <number-flop ref='digital-flop' :config="config"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config1"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
         </div>
         <div class="second-target col-2">
             <div class="decorate2"></div>
             <div class="number-flop" ref='group2'>
-                <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                <number-flop ref='digital-flop' :config="config2" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
             </div>
         </div>
         <div class="third-target col-3">
             <div class="decorate3"></div>
             <div class="number-flop" ref='group3'>
-                <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                <number-flop ref='digital-flop' :config="config3" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
             </div>
         </div>
     </div>
@@ -74,19 +74,47 @@ export default {
   data() {
     return {
       headerImg: require("./assets/csj2/header.png"),
-      config: {
-            number: [1002065],
+      config1: {
+            number: [955.70],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
             style: {
-                fontSize: 100,
+                fontSize: 90,
                 fontWeight: 'bolder',
-                fill: '#00f6ff',
+                fill: '#ff9e2b',
                 area: [800,121]
             },
             imgSrc: require("../../assets/number-bg.png"),
-            imgStyle: "width: 78px; height: 105px"
+            imgStyle: "width: 68px; height: 105px"
+        },
+      config2: {
+            number: [2890.11],
+            toFixed: 2,
+            content: '{nt}',
+            formatter: this.formatter,
+            style: {
+                fontSize: 90,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [800,121]
+            },
+            imgSrc: require("../../assets/number-bg.png"),
+            imgStyle: "width: 68px; height: 105px"
+        },
+      config3: {
+            number: [132.26],
+            toFixed: 2,
+            content: '{nt}',
+            formatter: this.formatter,
+            style: {
+                fontSize: 90,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [800,121]
+            },
+            imgSrc: require("../../assets/number-bg.png"),
+            imgStyle: "width: 68px; height: 105px"
         }
     };
   },
@@ -153,29 +181,29 @@ export default {
         if(chart){
             const thisChart = this.$echarts.init(chart)
             const option = {
-                title: {
-                    text: 'Referer of a Website',
-                    subtext: 'Fake Data',
-                    left: 'center'
-                  },
                 tooltip: {
                     trigger: 'item'
                 },
-                // legend: {
-                //     orient: 'vertical',
-                //     left: 'left'
-                // },
+                legend: {
+                    orient: 'horizontal',
+                    right: '10%',
+                    bottom: '0%',
+                    textStyle:{
+                      color: '#fff',
+                      fontWeight: 'bolder'
+                    }
+                },
                 series: [
                     {
                         name: 'Access From',
                         type: 'pie',
-                        radius: '50%',
+                        radius: '80%',
+                        top: '0',
                         data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' }
+                            { value: 66.35, name: '保险' },
+                            { value: 41.28, name: '智能制造' },
+                            { value: 19.14, name: '银行' },
+                            { value: 5.49, name: '资产管理' }
                         ],
                         emphasis: {
                             itemStyle: {

@@ -202,37 +202,60 @@ export default {
 
     setBackgroundImg () {
       const {mergedConfig } = this
-      const {imgSrc, imgStyle}= mergedConfig
+      const {imgSrc, imgStyle, number}= mergedConfig
       const el =  this.$refs['flop-background']
 
+      var num = number[0].toFixed(0)
+
+      var cnt = 0
+      while(num){
+        cnt++
+        num = parseInt(num / 10)
+      }
+
       if(imgSrc && imgStyle){
-        const num = 3
         var image = new Image()
         image.src = imgSrc
         image.style = imgStyle
 
-        // add split symbol between numbers
-        var divNode = document.createElement("div");
-        divNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
+        // add split symbol background between numbers
+        var spaceNode = document.createElement("div")
+        spaceNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
 
+        if(cnt % 3 == 0){
+          for(var i = 0; i < 3; i++){
+            el.appendChild(image.cloneNode(true))
+          }
+          for(var j = 0; j < (cnt/3-1); j++){
+            el.appendChild(spaceNode.cloneNode(true))
+            for(var k = 0; k < 3; k++){
+              el.appendChild(image.cloneNode(true))
+            }
+          }
+        }else if(cnt % 3 == 1){
+            console.log("middle cnt",cnt);
+            el.appendChild(image.cloneNode(true))
+            for(var m = 0; m < parseInt(cnt/3); m++){
+              console.log("spacenode?");
+              el.appendChild(spaceNode.cloneNode(true))
+              for(var n = 0; n < 3; n++){
+                el.appendChild(image.cloneNode(true))
+              }
+          }
+        }else{
+            el.appendChild(image.cloneNode(true))
+            el.appendChild(image.cloneNode(true))
+            for(var l = 0; l < parseInt(cnt/3); l++){
+              el.appendChild(spaceNode.cloneNode(true))
+              for(var p = 0; p < 3; p++){
+                el.appendChild(image.cloneNode(true))
+              }
+          }
+        }
+        el.appendChild(spaceNode.cloneNode(true))
+        el.appendChild(image.cloneNode(true))
         el.appendChild(image.cloneNode(true))
 
-        el.appendChild(divNode)
-        for(var i = 0; i < num; i++){
-          el.appendChild(image.cloneNode(true))
-        }
-      
-        el.appendChild(divNode.cloneNode(true))
-
-        for(var j = 0; j < num; j++){
-          el.appendChild(image.cloneNode(true))
-        }
-
-        el.appendChild(divNode.cloneNode(true))
-
-        for(var k = 0; k < 2; k++){
-          el.appendChild(image.cloneNode(true))
-        }
       }
     }
 

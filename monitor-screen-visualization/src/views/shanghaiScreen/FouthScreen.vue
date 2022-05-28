@@ -9,19 +9,19 @@
           <div class="first-target col-1">
               <div class="decorate">2021年累计业务规模（亿元）</div>
               <div class="number-flop" ref='group1'>
-                  <number-flop ref='digital-flop' :config="config"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config1"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="second-target col-2">
               <div class="decorate">本年业务规模（万元）</div>
               <div class="number-flop" ref='group2'>
-                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config2" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="third-target col-3">
               <div class="decorate">2021年累计业务收入（亿元）</div>
               <div class="number-flop" ref='group3'>
-                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config3" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
       </div>
@@ -158,8 +158,36 @@ export default {
         personalImg: require("./assets/jituanyewu/icon_sixth.jpg"),
         enterpriseImg: require("./assets/jituanyewu/icon_seventh.jpg"),
         productImg: require("./assets/jituanyewu/icon_eighth.jpg"),
-        config: {
-            number: [1002065],
+        config1: {
+            number: [8420.13],
+            toFixed: 2,
+            content: '{nt}',
+            formatter: this.formatter,
+            style: {
+                fontSize: 90,
+                fontWeight: 'bold',
+                fill: '#ff9e2b',
+                area: [800,121]
+            },
+            imgSrc: require("../../assets/number-bg.png"),
+            imgStyle: "width: 68px; height: 95px"
+        },
+        config2: {
+            number: [41017301.57],
+            toFixed: 2,
+            content: '{nt}',
+            formatter: this.formatter,
+            style: {
+                fontSize: 90,
+                fontWeight: 'bold',
+                fill: '#ff9e2b',
+                area: [800,121]
+            },
+            imgSrc: require("../../assets/number-bg.png"),
+            imgStyle: "width: 68px; height: 95px"
+        },
+        config3: {
+            number: [527.66],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
