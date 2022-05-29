@@ -9,25 +9,27 @@
           <div class="first-target col-1">
               <div class="decorate">本年新增业务规模（亿元）</div>
               <div class="number-flop" ref='group1'>
-                  <number-flop ref='digital-flop' :config="config"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config1"  style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="second-target col-2">
               <div class="decorate">业务规模（万元）</div>
               <div class="number-flop" ref='group2'>
-                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config2" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
           <div class="third-target col-3">
               <div class="decorate">本年累计业务收入（亿元）</div>
               <div class="number-flop" ref='group3'>
-                  <number-flop ref='digital-flop' :config="config" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
+                  <number-flop ref='digital-flop' :config="config3" style="margin:10px 70px 0 80px;width:800px;height:130px;" />
               </div>
           </div>
     </div>
     <div class="main-content row-3">
       <div class="main-left">
-        <div class="left-top"></div>
+        <div class="left-top">
+          <span class="left-top-span">288.21亿</span>
+        </div>
         <div class="left-down">
           <img src="./assets/csj/down-title.png" alt="" class="down-title"/>
           <img src="./assets/csj/down-content.png" alt="" class="down-content"/>
@@ -48,20 +50,48 @@
 export default {
   data() {
     return {
-      config: {
-            number: [1002065],
+            config1: {
+            number: [955.70],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
             style: {
-                fontSize: 100,
+                fontSize: 90,
                 fontWeight: 'bolder',
-                fill: '#00f6ff',
+                fill: '#ff9e2b',
                 area: [800,121]
             },
             imgSrc: require("../../assets/number-bg.png"),
-            imgStyle: "width: 78px; height: 105px"
-        }
+            imgStyle: "width: 68px; height: 105px"
+        },
+          config2: {
+                number: [2890.11],
+                toFixed: 2,
+                content: '{nt}',
+                formatter: this.formatter,
+                style: {
+                    fontSize: 90,
+                    fontWeight: 'bolder',
+                    fill: '#ff9e2b',
+                    area: [800,121]
+                },
+                imgSrc: require("../../assets/number-bg.png"),
+                imgStyle: "width: 68px; height: 105px"
+            },
+          config3: {
+                number: [132.26],
+                toFixed: 2,
+                content: '{nt}',
+                formatter: this.formatter,
+                style: {
+                    fontSize: 90,
+                    fontWeight: 'bolder',
+                    fill: '#ff9e2b',
+                    area: [800,121]
+                },
+                imgSrc: require("../../assets/number-bg.png"),
+                imgStyle: "width: 68px; height: 105px"
+            }
     };
   },
   methods: {
@@ -200,6 +230,17 @@ button{
   width: 794px;
   height: 741px;
   margin-top: 60px;
+  display: flex;
+}
+
+.left-top-span{
+  width: 100%;
+  height: 70px;
+  color:rgb(255, 255, 255);
+  font-size: 80px;
+  font-weight: bolder;
+  margin-top: 520px; 
+  text-align: center;
 }
 
 .left-down{
