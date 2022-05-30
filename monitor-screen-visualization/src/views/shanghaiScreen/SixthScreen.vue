@@ -37,7 +37,12 @@
           <div class="chart" ref="chart" style="width:850px;height:400px;"></div>
         </div>
       </div>
-      <div class="map"></div>
+      <div class="map">
+        <span class="anhui">531.9</span>
+        <span class="jiangsu">634.2</span>
+        <span class="shanghai">695.5</span>
+        <span class="zhejiang">1028.5</span>
+      </div>
       <div class="middle-right">
         <div class="middle-right-title"></div>
         <div class="middle-right-content">
@@ -50,7 +55,7 @@
         <div class="bottom-left-title"></div>
         <div class="bottom-left-content">
           <div class="bottom-left-text">英大基金设立上海分公司、能源REITs资产证券化业务部；英大资产、英大产业基金、英大投资、英大保理等单位分别设立长三角业务部。国网英大集团各金融单位充实长三角业务力量，强化业务协同。国网英大碳资产公司股权划转至国网英大股份，更好支撑国家电网公司服务“碳达峰、碳中和”战略。新设英大数科公司，积极推动金融数字化转型。
-</div>
+      </div>
         </div>
       </div>
       <div class="bottom-center">
@@ -63,7 +68,7 @@
         <div class="bottom-right-title"></div>
         <div class="bottom-right-content">
           <div class="bottom-right-text">首发绿色金融行动方案，实现业务规模超70亿元。推动设立绿色能源产业基金，预期母基金规模达200亿元。首创多单绿色金融产品，发行国内首支碳中和资产证券化债券（ABCP），设立首个风电绿色1号资产管理计划，创新清洁能源电厂绿色保理业务模式。制定首套电力行业绿色企业认证标准，依托能源大数据开发“碳e融”产品，助力绿色企业降低融资成本。
-</div>
+      </div>
         </div>
       </div>
     </div>
@@ -205,13 +210,22 @@ export default {
                             { value: 19.14, name: '银行' },
                             { value: 5.49, name: '资产管理' }
                         ],
-                        emphasis: {
-                            itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
+                        // emphasis: {
+                        //     itemStyle: {
+                        //     shadowBlur: 10,
+                        //     shadowOffsetX: 0,
+                        //     shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        //     }
+                        // },
+                        label:{
+                          color: '#fff',
+                          fontSize: 30,
+                          fontWeight: 'bolder'
+                        },
+                        labelLine:{
+                          length: 30,
+                          length2: 50
+                        } 
                     }
                 ]
             }
@@ -328,6 +342,42 @@ button{
   background: url(./assets/csj2/map.png) 100% no-repeat;
 }
 
+.anhui{
+  position:relative;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 45px;
+  top: 142px;
+  left: 136px;
+}
+
+.jiangsu{
+  position:relative;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 45px;
+  top: 134px;
+  left: 470px;
+}
+
+.shanghai{
+  position:relative;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 45px;
+  top: 304px;
+  left: 555px;
+}
+
+.zhejiang{
+  position:relative;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 45px;
+  top: 617px;
+  left: 467px;
+}
+
 .middle-right{
   width: 1028px;
   display: flex;
@@ -358,8 +408,8 @@ button{
   margin-left: 80px;
 }
 .bottom{
-  width: 100%;
-  height: 650px;
+  width: 95%;
+  height: 700px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

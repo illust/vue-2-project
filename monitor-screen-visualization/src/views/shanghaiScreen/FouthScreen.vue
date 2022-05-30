@@ -114,7 +114,9 @@
                           <span class="productText">产品总数</span>
                           <span class="productNum">173款</span>
                       </div>
-                      <div class="productList"></div>
+                      <div class="productList">
+                        <dv-scroll-board :config="configProduct" class="scroll-board" style="width:500px;height:250px" />
+                      </div>
                   </div>
               </div>
               <div class="target-show">
@@ -209,6 +211,23 @@ export default {
                 fill: '#ff9e2b',
                 area: [195,55]
             }
+        },
+        configProduct:{
+            data: [
+                ['行1列1', '行1列2', '行1列3'],
+                ['行2列1', '行2列2', '行2列3'],
+                ['行3列1', '行3列2', '行3列3'],
+                ['行4列1', '行4列2', '行4列3'],
+                ['行5列1', '行5列2', '行5列3'],
+                ['行6列1', '行6列2', '行6列3'],
+                ['行7列1', '行7列2', '行7列3'],
+                ['行8列1', '行8列2', '行8列3'],
+                ['行9列1', '行9列2', '行9列3'],
+                ['行10列1', '行10列2', '行10列3']
+            ],
+            index: true,
+            columnWidth: [50],
+            align: ['center']
         },
         option: {
             tooltip: {
@@ -850,6 +869,7 @@ button{
 
 .specialProduct{
     display: flex;
+    justify-content: space-around;
     margin: 20px 0 10px 65px;
 }
 
