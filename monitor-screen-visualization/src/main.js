@@ -7,6 +7,10 @@ import NumberFlop from './components/NumberFlop'
 
 import * as echarts from 'echarts'
 
+import axios from 'axios'
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/api'
+
 Vue.component(NumberFlop.name,NumberFlop)
 
 Vue.use(dataV)

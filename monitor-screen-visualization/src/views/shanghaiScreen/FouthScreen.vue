@@ -60,7 +60,7 @@
                       <div class="target-num-flop">
                           <div class="target-title-2">产融协同收入</div>
                           <div class="middle-number-flop">
-                              <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                              <number-flop ref='digital-flop' :config="configMiddle1" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                           </div>
                       </div>
                   </div>
@@ -69,7 +69,7 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">融融协同规模</div>
                         <div class="middle-number-flop">
-                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle2" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -78,7 +78,7 @@
                       <div class="target-num-flop-1">
                         <div class="target-title-2">承保电网设备资产规模</div>
                         <div class="middle-number-flop">
-                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle3" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -87,7 +87,7 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">管理资产总额</div>
                         <div class="middle-number-flop">
-                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle4" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -96,7 +96,7 @@
                       <div class="target-num-flop">
                         <div class="target-title-2">服务主业融资</div>
                         <div class="middle-number-flop">
-                            <number-flop ref='digital-flop' :config="configMiddle" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle5" style="margin:0 0 0 -13px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -149,6 +149,7 @@
 <script>
 // import ScreenHeader from '../../components/ScreenHeader'
 import ScreenMap from '../../components/ScreenMap'
+import { apiAddress } from '../../request/api';
 export default {
   name:'fouth-screen',
   components: {
@@ -157,9 +158,9 @@ export default {
   data () {
     return {
         headerImg: require("./assets/jituanyewu/title_top.png"),
-        personalImg: require("./assets/jituanyewu/icon_sixth.jpg"),
-        enterpriseImg: require("./assets/jituanyewu/icon_seventh.jpg"),
-        productImg: require("./assets/jituanyewu/icon_eighth.jpg"),
+        personalImg: require("./assets/jituanyewu/icon_sixth.png"),
+        enterpriseImg: require("./assets/jituanyewu/icon_seventh.png"),
+        productImg: require("./assets/jituanyewu/icon_eighth.png"),
         config1: {
             number: [8420.13],
             toFixed: 2,
@@ -202,8 +203,48 @@ export default {
             imgSrc: require("../../assets/number-bg.png"),
             imgStyle: "width: 68px; height: 95px"
         },
-        configMiddle: {
-            number: [142],
+        configMiddle1: {
+            number: [249],
+            content: '{nt}  亿元',
+            style: {
+                fontSize: 35,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [195,55]
+            }
+        },
+        configMiddle2: {
+            number: [2507],
+            content: '{nt}  亿元',
+            style: {
+                fontSize: 35,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [195,55]
+            }
+        },
+        configMiddle3: {
+            number: [70000],
+            content: '{nt}  亿元',
+            style: {
+                fontSize: 35,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [195,55]
+            }
+        },
+        configMiddle4: {
+            number: [1.6],
+            content: '{nt}  万亿',
+            style: {
+                fontSize: 35,
+                fontWeight: 'bolder',
+                fill: '#ff9e2b',
+                area: [195,55]
+            }
+        },
+        configMiddle5: {
+            number: [8201],
             content: '{nt}  亿元',
             style: {
                 fontSize: 35,
@@ -586,7 +627,7 @@ export default {
  },
  mounted(){
     // this.render()
-
+    apiAddress({}).then(res => console.log("res",res))
     // this.drawNumBg()
     this.setMyChartOne()
     this.setMyChartTwo()
