@@ -55,7 +55,11 @@
     <div class="bottom">
       <div class="bottom-left">
         <div class="bottom-left-title"></div>
-        <div class="bottom-left-content"></div>
+        <div class="bottom-left-content">
+          <div class="bottom-left-one"></div>
+          <div class="bottom-left-two"></div>
+          <div class="bottom-left-three"></div>
+        </div>
       </div>
       <div class="bottom-right">
         <div class="bottom-right-title"></div>
@@ -343,6 +347,33 @@ button{
   background: url(./assets/ydjt_two/bottom-left-background.png) 100% no-repeat;
   width: 1844px;
   height: 546px;
+}
+
+.bottom-left-one{
+  position: relative;
+  left: 20px;
+  top: 107px;
+  background: url(./assets/ydjt_two/bottom-left-comp1.png) 100% no-repeat;
+  width: 887px;
+  height: 200px;
+}
+
+.bottom-left-two{
+  position: relative;
+  left: 846px;
+  top: -98px;
+  background: url(./assets/ydjt_two/bottom-left-comp2.png) 100% no-repeat;
+  width: 1129px;
+  height: 200px;
+}
+
+.bottom-left-three{
+  position: relative;
+  left: 20px;
+  top: -136px;
+  background: url(./assets/ydjt_two/bottom-left-comp3.png) 100% no-repeat;
+  width: 1932px;
+  height: 299px;
 }
 
 .bottom-right{

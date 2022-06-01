@@ -78,7 +78,7 @@
                       <div class="target-num-flop-1">
                         <div class="target-title-2">承保电网设备资产规模</div>
                         <div class="middle-number-flop">
-                            <number-flop ref='digital-flop' :config="configMiddle3" style="margin:0 0 0 -13px;width:195px;height:55px;" />
+                            <number-flop ref='digital-flop' :config="configMiddle3" style="margin:0 0 0 20px;width:195px;height:55px;" />
                         </div>
                       </div>
                   </div>
@@ -131,15 +131,15 @@
       </div>
       <div class="footer-content row-4">
           <div class="target-show-1 col-1">
-                <div class="target-title-1">2020年业务规模</div>
+                <div class="target-title-1">2021年业务规模</div>
                 <div class="chart" id="myChart3" ref="chart3" style="width:1000px;height:460px"></div>
           </div>
           <div class="target-show-1 col-2">
-                <div class="target-title-1">2020年营业收入</div>
+                <div class="target-title-1">2021年营业收入</div>
                 <div class="chart" id="myChart4" ref="chart4" style="width:1000px;height:460px"></div>
           </div>
           <div class="target-show-1 col-3">
-                <div class="target-title-1">2020年业务利润</div>
+                <div class="target-title-1">2021年业务利润</div>
                 <div class="chart" id="myChart5" ref="chart5" style="width:1000px;height:460px"></div>
           </div>
       </div>
@@ -149,7 +149,7 @@
 <script>
 // import ScreenHeader from '../../components/ScreenHeader'
 import ScreenMap from '../../components/ScreenMap'
-import { apiAddress } from '../../request/api';
+import { getThisYearScale } from '../../request/api';
 export default {
   name:'fouth-screen',
   components: {
@@ -627,7 +627,7 @@ export default {
  },
  mounted(){
     // this.render()
-    apiAddress({}).then(res => console.log("res",res))
+    getThisYearScale({}).then(res => console.log("res",res))
     // this.drawNumBg()
     this.setMyChartOne()
     this.setMyChartTwo()
