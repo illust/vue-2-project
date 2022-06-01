@@ -132,15 +132,15 @@
       <div class="footer-content row-4">
           <div class="target-show-1 col-1">
                 <div class="target-title-1">2021年业务规模</div>
-                <div class="chart" id="myChart3" ref="chart3" style="width:1000px;height:460px"></div>
+                <div class="chart" id="myChart3" ref="chart3" style="width:1200px;height:460px"></div>
           </div>
           <div class="target-show-1 col-2">
                 <div class="target-title-1">2021年营业收入</div>
-                <div class="chart" id="myChart4" ref="chart4" style="width:1000px;height:460px"></div>
+                <div class="chart" id="myChart4" ref="chart4" style="width:1200px;height:460px"></div>
           </div>
           <div class="target-show-1 col-3">
                 <div class="target-title-1">2021年业务利润</div>
-                <div class="chart" id="myChart5" ref="chart5" style="width:1000px;height:460px"></div>
+                <div class="chart" id="myChart5" ref="chart5" style="width:1200px;height:460px"></div>
           </div>
       </div>
   </div>
@@ -236,6 +236,7 @@ export default {
         configMiddle4: {
             number: [1.6],
             content: '{nt}  万亿',
+            toFixed: 1,
             style: {
                 fontSize: 35,
                 fontWeight: 'bolder',
@@ -440,11 +441,8 @@ export default {
                             show: false
                         },
                         data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' }
+                            { value: 2, name: '个人' },
+                            { value: 98, name: '企业' },
                         ]
                     }
                 ]
@@ -463,15 +461,39 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: ['中国电财', '英大基金', '国网租赁', '英大人寿', '英大资产', '英大长安', '英大财险','英大产业基金','英大投资','英大保理'],
+                    axisLabel: {
+                        color: '#64feba',
+                        fontWeight: 'bold',
+                        fontSize: 20,
+                        interval: 0
+                    }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    splitLine:{
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        fontWeight: 'bolder',
+                        fontSize: 20
+                    }
                 },
                 series: [
                     {
-                    data: [120, 200, 150, 80, 70, 110, 130],
-                    type: 'bar'
+                    data: [3289.44, 788.2, 567.63, 229.78, 170.33, 148.71, 118.32, 112, 79.49, 47.47],
+                    type: 'bar',
+                    label: {
+                        show: true,
+                        position: 'outside',
+                        color: '#fff',
+                        fontWeight: 'bold',
+                        fontSize: 20
+                    },
+                    itemStyle:{
+                        color: '#64feba'
+                        }
                     }
                 ]
             }
@@ -489,15 +511,39 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: ['英大人寿','中国电财','英大财险', '国网租赁', '英大资产', '英大长安', '英大基金','英大保理','英大产业基金','英大投资'],
+                    axisLabel: {
+                        color: '#ffdd26',
+                        fontWeight: 'bold',
+                        fontSize: 20,
+                        interval: 0
+                    }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    splitLine:{
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        fontWeight: 'bolder',
+                        fontSize: 20
+                    }
                 },
                 series: [
                     {
-                    data: [120, 200, 150, 80, 70, 110, 130],
-                    type: 'bar'
+                        data: [177.35,122.38,81.23,53.08,23.64,12.93,1.5,1.04,0.76,0.26],
+                        type: 'bar',
+                        label: {
+                            show: true,
+                            position: 'outside',
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            fontSize: 20
+                        },
+                        itemStyle:{
+                            color: '#ffdd26'
+                        }
                     }
                 ]
             }
@@ -515,15 +561,39 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: ['中国电财','英大财险','国网租赁', '英大长安','英大人寿',  '英大资产', '英大产业基金','英大基金','英大保理','英大投资'],
+                    axisLabel: {
+                        color: '#7fe036',
+                        fontWeight: 'bold',
+                        fontSize: 20,
+                        interval: 0
+                    }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    splitLine:{
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#fff',
+                        fontWeight: 'bolder',
+                        fontSize: 20
+                    }
                 },
                 series: [
                     {
-                    data: [120, 200, 150, 80, 70, 110, 130],
-                    type: 'bar'
+                        data: [67.88,14.52,10,7.4,3.3,1.25,0.86,0.76,0.12,0.11],
+                        type: 'bar',                    
+                        label: {
+                            show: true,
+                            position: 'outside',
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            fontSize: 20
+                        },
+                        itemStyle:{
+                            color: '#7fe036'
+                        }
                     }
                 ]
             }
@@ -541,9 +611,9 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020'],
+                    data: ['2018', '2019', '2020', '2021'],
                     axisLabel:{
-                      color: '#fff',
+                      color: '#1be611',
                       fontWeight: 'bolder',
                       fontSize: 20
                     }
@@ -558,17 +628,40 @@ export default {
                       show: false
                     },
                     axisLabel:{
-                      color: '#fff',
+                      color: '#1be611',
                       fontWeight: 'bolder',
                       fontSize: 20
                     }
                 },
                 series: [
                     {
-                    data: [140, 180, 240],
+                    data: [0.82,1.01,1.36,1.59],
                     type: 'line',
+                    label: {
+                        show: true,
+                        position: 'outside',
+                        color: '#1be611',
+                        fontWeight: 'bold',
+                        fontSize: 20
+                    },
+                    lineStyle:{
+                        color: '#1be611'
+                    },
+                    itemStyle:{
+                        color: '#1be611'
+                    },
                     areaStyle:{
-                      color: '#a48933'
+                      color: this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
+                                {
+                                    offset: 0,
+                                    color: "rgba(21,168,31,0)",
+                                },
+                                {
+                                    offset: 1,
+                                    color: "rgba(21,168,31,1)",
+                                },
+                            ])
+
                     }
                     }
                 ]
@@ -587,9 +680,9 @@ export default {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: ['2018', '2019', '2020'],
+                    data: ['2018', '2019', '2020','2021'],
                     axisLabel:{
-                      color: '#fff',
+                      color: '#E07E3C',
                       fontWeight: 'bolder',
                       fontSize: 20
                     }
@@ -603,18 +696,37 @@ export default {
                       color: 'green'
                     },
                     axisLabel:{
-                      color: '#fff',
+                      color: '#E07E3C',
                       fontWeight: 'bolder',
                       fontSize: 20
                     }
                 },
                 series: [
                     {
-                    data: [382, 764, 1498],
-                    type: 'bar',
-                    itemStyle:{
-                      color: '#E07E3C'
-                    }
+                        data: [245, 314,453,528],
+                        type: 'line',
+                        label: {
+                            show: true,
+                            position: 'outside',
+                            color: '#E07E3C',
+                            fontWeight: 'bold',
+                            fontSize: 20
+                        },
+                        itemStyle:{
+                        color: '#E07E3C'
+                        },
+                        areaStyle:{
+                            color: this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
+                                        {
+                                            offset: 0,
+                                            color: "rgba(122,77,43,0)",
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: "rgba(122,77,43)",
+                                        },
+                                    ])
+                        }
                     }
                 ]
             }
@@ -677,7 +789,7 @@ button{
     font-size: 40px;
     color: #00f6ff;
     text-align: center;
-    font-family: 'SourceHanSansCN-Medium';
+    font-family: 'SourceHanSansCN-Heavy';
 }
 
 .number-flop{
@@ -690,7 +802,7 @@ button{
     width: 969px;
     height: 77px;
     background: url(./assets/jituanyewu/bg_target.png) 100% no-repeat;
-    font-family: 'SourceHanSansCN-Bold';
+    font-family: 'SourceHanSansCN-Heavy';
     font-size: 40px;
     line-height: 77px;
     color: #00f6ff;
@@ -843,14 +955,14 @@ button{
     margin-top: 25px;
     color: #00f6ff;
     text-align: center;
-    font-family: 'SourceHanSansCN-Medium';
+    font-family: 'SourceHanSansCN-Heavy';
 }
 
 .target-title-2{
     font-size: 25px;
     color: #00f6ff;
     text-align: start;
-    font-family: 'SourceHanSansCN-Medium';
+    font-family: 'SourceHanSansCN-Bold';
 }
 
 .target-show-1{

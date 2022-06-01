@@ -6,9 +6,10 @@
   }
 
 
+
   @font-face {  
-    font-family: 'SourceHanSansCN-Bold'; 
-    src: url('../font/SOURCEHANSANSCN-BOLD.OTF'); 
+    font-family: 'SourceHanSansCN-Light'; 
+    src: url('../font/SourceHanSansCN-Light.otf'); 
     font-weight: normal;  
     font-style: normal;  
   }
@@ -20,4 +21,18 @@
     font-style: normal;  
   }
 
+
+  @font-face {  
+    font-family: 'SourceHanSansCN-Bold'; 
+    src: url('../font/SOURCEHANSANSCN-BOLD.OTF'); 
+    font-weight: normal;  
+    font-style: normal;  
+  }
+
+  @font-face {  
+    font-family: 'SourceHanSansCN-Heavy'; 
+    src: url('../font/SourceHanSansCN-Heavy.otf'); 
+    font-weight: normal;  
+    font-style: normal;  
+  }
 

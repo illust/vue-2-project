@@ -62,8 +62,41 @@
         </div>
       </div>
       <div class="bottom-right">
-        <div class="bottom-right-title"></div>
-        <div class="bottom-right-content"></div>
+        <div class="bottom-right-title">
+          <div class="bottom-right-title-text">主要经营目标</div>
+        </div>
+        <div class="bottom-right-content">
+          <div class="bottom-right-one">
+            <img src="./assets/ydjt_two/bottom-right-icon1.png" alt="" class="br-icon">
+            <div class="br-text">
+              <div class="profit-title">利润总额</div>
+              <div class="content">
+                <span class="profit-num"> 1&nbsp;9&nbsp;0 <span class="p">亿元</span></span>
+                <span class="profit-rate"><span class="p">同比增长</span> 1&nbsp;3&nbsp;.&nbsp;1 <span class="p">%</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-right-two">
+            <img src="./assets/ydjt_two/bottom-right-icon2.png" alt="" class="br-icon">
+            <div class="br-text">
+              <div class="income-title">营业收入</div>
+              <div class="content">
+                <span class="income-num"> 4&nbsp;7&nbsp;3 <span class="p">亿元</span></span>
+                <span class="income-rate"><span class="p">同比增长</span> 4&nbsp;.&nbsp;3 <span class="p">%</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-right-three">
+            <img src="./assets/ydjt_two/bottom-right-icon3.png" alt="" class="br-icon">
+            <div class="br-text">
+              <div class="scale-title">管理资产规模</div>
+              <div class="content">
+                <span class="scale-num"> 1&nbsp;.&nbsp;4&nbsp;5 <span class="p">万亿</span></span>
+                <span class="scale-rate"><span class="p">同比增长</span> 6&nbsp;.&nbsp;1 <span class="p">%</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -352,7 +385,7 @@ button{
 .bottom-left-one{
   position: relative;
   left: 20px;
-  top: 107px;
+  top: 80px;
   background: url(./assets/ydjt_two/bottom-left-comp1.png) 100% no-repeat;
   width: 887px;
   height: 200px;
@@ -361,7 +394,7 @@ button{
 .bottom-left-two{
   position: relative;
   left: 846px;
-  top: -98px;
+  top: -122px;
   background: url(./assets/ydjt_two/bottom-left-comp2.png) 100% no-repeat;
   width: 1129px;
   height: 200px;
@@ -370,7 +403,7 @@ button{
 .bottom-left-three{
   position: relative;
   left: 20px;
-  top: -136px;
+  top: -156px;
   background: url(./assets/ydjt_two/bottom-left-comp3.png) 100% no-repeat;
   width: 1932px;
   height: 299px;
@@ -387,9 +420,179 @@ button{
   height: 101px;
 }
 
+.bottom-right-title-text{
+  position: relative;
+  top: 22px;
+  left: 85px;
+  width: 421px;
+  height: 53px;
+  font-size: 54px;
+  font-family: 'SourceHanSansCN-Heavy';
+  font-weight: 1800;
+  color: #00FFD2;
+  line-height: 60px;
+
+  background: linear-gradient(0deg, #00FFD2 0%, #6CFFE5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .bottom-right-content{
   background: url(./assets/ydjt_two/bottom-right-background.png) 100% no-repeat;
   width: 1704px;
   height: 546px;
+}
+
+.bottom-right-one{
+  position: relative;
+  top: 106px;
+  left: 71px;
+  background: url(./assets/ydjt_two/bottom-right-comp1.png) 100% no-repeat;
+  width: 803px;
+  height: 131px;
+  display: flex;
+}
+
+
+.bottom-right-two{
+  position: relative;
+  top: -23px;
+  left: 870px;
+  background: url(./assets/ydjt_two/bottom-right-comp2.png) 100% no-repeat;
+  width: 803px;
+  height: 131px;
+  display: flex;
+}
+
+.bottom-right-three{
+  position: relative;
+  top: 61px;
+  left: 76px;
+  background: url(./assets/ydjt_two/bottom-right-comp3.png) 100% no-repeat;
+  width: 803px;
+  height: 131px;
+  display: flex;
+}
+
+.br-icon{
+  width: 92px;
+  height: 92px;
+  position: relative;
+  top: 22px;
+  left: 55px;
+}
+
+.br-text{
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  display: flex;
+}
+
+.profit-title{
+  width: 319px;
+  height: 60px;
+  font-size: 36px;
+  font-family: 'SourceHanSansCN-Light';
+  font-weight: 500;
+  color: #00FFD2;
+  line-height: 57px;
+  margin-top: 10px;
+  margin-left: 80px;
+}
+
+.profit-num{
+  width: 202px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Heavy';
+  font-weight: 800;
+  color: #00FFD2;
+  line-height: 54px;
+  margin-left: 80px;
+}
+
+.profit-rate{
+  width: 335px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Heavy';
+  font-weight: 800;
+  color: #00FFD2;
+  line-height: 54px;
+}
+
+.p{
+  font-size: 36px !important;
+  font-family: 'SourceHanSansCN-Light' !important;
+
+}
+
+.income-title{
+  width: 319px;
+  height: 60px;
+  font-size: 36px;
+  font-family: 'SourceHanSansCN-Light';
+  font-weight: 500;
+  color: #FF8512;
+  line-height: 57px;
+  margin-top: 10px;
+  margin-left: 80px;
+}
+
+.income-num{
+  width: 202px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Medium';
+  font-weight: 800;
+  color: #FF8512;
+  line-height: 54px;
+  margin-left: 80px;
+}
+
+.income-rate{
+  width: 302px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Medium';
+  font-weight: 800;
+  color: #FF8512;
+  line-height: 54px;
+}
+
+.scale-title{
+  width: 319px;
+  height: 60px;
+  font-size: 36px;
+  font-family: 'SourceHanSansCN-Light';
+  font-weight: 500;
+  color: #8BE2FF;
+  line-height: 57px;
+  margin-top: 10px;
+  margin-left: 80px;
+}
+
+.scale-num{
+  width: 242px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Medium';
+  font-weight: 800;
+  color: #8BE2FF;
+  line-height: 54px;
+  margin-left: 80px;
+}
+
+.scale-rate{
+  width: 286px;
+  height: 36px;
+  font-size: 46px;
+  font-family: 'SourceHanSansCN-Medium';
+  font-weight: 800;
+  color: #8BE2FF;
+  line-height: 54px;
 }
 </style>
