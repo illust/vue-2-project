@@ -9,7 +9,8 @@ import * as echarts from 'echarts'
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = 'http://10.4.5.210:18880'
 
 Vue.component(NumberFlop.name,NumberFlop)
 

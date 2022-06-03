@@ -161,6 +161,7 @@ export default {
         personalImg: require("./assets/jituanyewu/icon_sixth.png"),
         enterpriseImg: require("./assets/jituanyewu/icon_seventh.png"),
         productImg: require("./assets/jituanyewu/icon_eighth.png"),
+        config2num: 41017301.57,
         config1: {
             number: [8420.13],
             toFixed: 2,
@@ -176,7 +177,7 @@ export default {
             imgStyle: "width: 68px; height: 95px"
         },
         config2: {
-            number: [41017301.57],
+            //number: [this.config2num],   //[41017301.57],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
@@ -211,7 +212,8 @@ export default {
                 fontWeight: 'bolder',
                 fill: '#ff9e2b',
                 area: [195,55]
-            }
+            },
+            formatter: this.formatter1
         },
         configMiddle2: {
             number: [2507],
@@ -221,7 +223,8 @@ export default {
                 fontWeight: 'bolder',
                 fill: '#ff9e2b',
                 area: [195,55]
-            }
+            },
+            formatter: this.formatter1
         },
         configMiddle3: {
             number: [70000],
@@ -231,7 +234,8 @@ export default {
                 fontWeight: 'bolder',
                 fill: '#ff9e2b',
                 area: [195,55]
-            }
+            },
+            formatter: this.formatter1
         },
         configMiddle4: {
             number: [1.6],
@@ -242,7 +246,8 @@ export default {
                 fontWeight: 'bolder',
                 fill: '#ff9e2b',
                 area: [195,55]
-            }
+            },
+            formatter: this.formatter1
         },
         configMiddle5: {
             number: [8201],
@@ -252,7 +257,8 @@ export default {
                 fontWeight: 'bolder',
                 fill: '#ff9e2b',
                 area: [195,55]
-            }
+            },
+            formatter: this.formatter1
         },
         configProduct:{
             data: [
@@ -305,10 +311,10 @@ export default {
     }
  },
  methods:{
-     goNextPage(){
+    goNextPage(){
           this.$router.push("/fifth-screen");
-      },
-     formatter (number) {
+    },
+    formatter (number) {
         const numbers = number.toString().split('').reverse()
         const segs1 = numbers.splice(0, 3).join('')
         const segs2 = []
@@ -318,7 +324,15 @@ export default {
         segs = segs.split("").join(String.fromCharCode(8201))
 
         return segs
-      },
+    },
+    formatter1 (number) {
+        const numbers = number.toString().split('').reverse()
+        const segs = []
+
+        while (numbers.length) segs.push(numbers.splice(0, 3).join(''))
+
+        return segs.join(',').split('').reverse().join('')
+    },
     render(){
       this.config ={ ...this.config}
     },
@@ -413,12 +427,19 @@ export default {
         if(chart){
             const thisChart = this.$echarts.init(chart)
             const option = {
+                color: ['#fe8d42','#75e1a5'],
+                colorBy: 'data',
                 tooltip: {
                     trigger: 'item'
                 },
                 legend: {
-                    top: '5%',
-                    left: 'center'
+                    top: '80%',
+                    right: '5%',
+                    textStyle:{
+                        color: '#fff',
+                        fontWeight: 'bold',
+                        fontSize: 15
+                    }
                 },
                 series: [
                     {
@@ -427,8 +448,12 @@ export default {
                         radius: ['40%', '70%'],
                         avoidLabelOverlap: false,
                         label: {
-                            show: false,
-                            position: 'center'
+                            show: true,
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            fontSize: 15,
+                            position: 'outside',
+                            formatter:'{d}%\n{b}'
                         },
                         emphasis: {
                             label: {
@@ -438,12 +463,22 @@ export default {
                             }
                         },
                         labelLine: {
-                            show: false
+                            show: true,
+                            length2: 100
                         },
                         data: [
                             { value: 2, name: '个人' },
                             { value: 98, name: '企业' },
-                        ]
+                        ],
+                        itemStyle: {
+                            color: function (colors) {
+                                var colorList = [
+                                '#7af7b2',
+                                '#ff4738'
+                                ];
+                                return colorList[colors.dataIndex];
+                            }
+                        }
                     }
                 ]
             }
@@ -735,11 +770,24 @@ export default {
                 thisChart.resize()
             })
         }
+    },
+
+    getThisYearScale(){
+        getThisYearScale({}).then(res => {
+            console.log("res",res)
+            // this.config2num = res.bnywgm
+        }
+            )
     }
+ },
+ created(){
+    const a = 2435234.99
+    this.config2['number'] =  [a] 
+    console.log("config2",this.config2.number[0]);
  },
  mounted(){
     // this.render()
-    getThisYearScale({}).then(res => console.log("res",res))
+    this.getThisYearScale()
     // this.drawNumBg()
     this.setMyChartOne()
     this.setMyChartTwo()
