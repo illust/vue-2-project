@@ -110,6 +110,7 @@ export default {
       initGraph()
 
       setBackgroundImg ()
+
     },
     initRender () {
       const { $refs } = this
@@ -120,7 +121,7 @@ export default {
     mergeConfig () {
       const { defaultConfig, config } = this
 
-      console.log("config",config);
+      // console.log("config",config);
 
       this.mergedConfig = deepMerge(deepClone(defaultConfig, true), config || {})
 
@@ -172,11 +173,13 @@ export default {
       })
     },
     update () {
-      const { mergeConfig, mergeShape, getShape, getStyle, graph, mergedConfig } = this
+      const { mergeConfig, mergeShape, getShape, getStyle, graph, mergedConfig, setBackgroundImg } = this
 
       graph.animationEnd()
 
       mergeConfig()
+
+      setBackgroundImg()  // new adds
 
       if (!graph) return
 
@@ -204,7 +207,9 @@ export default {
       const {mergedConfig } = this
       const {imgSrc, imgStyle, number}= mergedConfig
       const el =  this.$refs['flop-background']
-
+      
+      console.log("mmmm",number);
+      console.log("mergedConfig",mergedConfig);
       var num = number[0].toFixed(0)
 
       var cnt = 0
@@ -233,10 +238,8 @@ export default {
             }
           }
         }else if(cnt % 3 == 1){
-            console.log("middle cnt",cnt);
             el.appendChild(image.cloneNode(true))
             for(var m = 0; m < parseInt(cnt/3); m++){
-              console.log("spacenode?");
               el.appendChild(spaceNode.cloneNode(true))
               for(var n = 0; n < 3; n++){
                 el.appendChild(image.cloneNode(true))
@@ -262,7 +265,6 @@ export default {
   },
   mounted () {
     const { init } = this
-
     init()
   }
 }

@@ -3,10 +3,12 @@
 </template>
 <script>
 import gzData from '../../assets/json/data.json'
+import { getMap } from '@/request/api_screen';
 export default {
   name: "screen-map",
   data() {
     return {
+		mockData:[],
       mTime: '',
 			charts: '',
 			index: -1,
@@ -32,7 +34,7 @@ export default {
 									linear-gradient(#cccecf, #cccecf) right bottom,
 									linear-gradient(#cccecf, #cccecf) right bottom;
 							background-repeat: no-repeat;
-							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">5家</span> </div>`;
+							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span> </div>`;
 							return tipHtml;
 						},
 						borderWidth: 0
@@ -127,7 +129,7 @@ export default {
 		},
 		// 高亮轮播
 		mapActive () {
-			const dataLength = gzData.features.length;
+			const dataLength = this.mockData.length;
 			// 用定时器控制高亮
 			this.mTime = setInterval(() => {
 				// 清除之前的高亮
@@ -160,6 +162,24 @@ export default {
 					name: item.properties.name
 				};
 			});
+		},
+		getJsonNew () {
+			this.option.series[0].data = this.mockData.map((item) => { // 显示窗口的数据转换
+				return {
+					value: (Math.random() * 1000).toFixed(0),
+					name: item.PROVINCE_NAME
+				};
+			});
+			console.log("this.option.series[0].data",this.option.series[0].data);
+
+		},
+		getMap(){
+			getMap({}).then(res => {
+				res.map((e,index) => {
+					this.$set(this.mockData,index,e)
+				})
+				console.log("this.mockData",this.mockData);
+			})
 		}
   },
   mounted() {
@@ -167,7 +187,9 @@ export default {
   },
   created(){
     this.$echarts.registerMap('广东', gzData);
-	this.getJson();
+	this.getMap();
+
+	this.getJsonNew();
   }
 };
 </script>

@@ -115,7 +115,7 @@
                           <span class="productNum">173款</span>
                       </div>
                       <div class="productList">
-                        <dv-scroll-board :config="configProduct" class="scroll-board" style="width:500px;height:250px" />
+                        <dv-scroll-board :config="configProduct" class="scroll-board" style="width:400px;height:250px" />
                       </div>
                   </div>
               </div>
@@ -149,7 +149,7 @@
 <script>
 // import ScreenHeader from '../../components/ScreenHeader'
 import ScreenMap from '../../components/ScreenMap'
-import { getThisYearScale } from '../../request/api';
+import { getThisYearScale, getMultiTypeScale, getSpecialProductScale, getMap } from '../../request/api_screen';
 export default {
   name:'fouth-screen',
   components: {
@@ -161,7 +161,7 @@ export default {
         personalImg: require("./assets/jituanyewu/icon_sixth.png"),
         enterpriseImg: require("./assets/jituanyewu/icon_seventh.png"),
         productImg: require("./assets/jituanyewu/icon_eighth.png"),
-        config2num: 41017301.57,
+        chart1Data: [],
         config1: {
             number: [8420.13],
             toFixed: 2,
@@ -178,6 +178,7 @@ export default {
         },
         config2: {
             //number: [this.config2num],   //[41017301.57],
+            number: [],
             toFixed: 2,
             content: '{nt}',
             formatter: this.formatter,
@@ -261,53 +262,35 @@ export default {
             formatter: this.formatter1
         },
         configProduct:{
-            data: [
-                ['行1列1', '行1列2', '行1列3'],
-                ['行2列1', '行2列2', '行2列3'],
-                ['行3列1', '行3列2', '行3列3'],
-                ['行4列1', '行4列2', '行4列3'],
-                ['行5列1', '行5列2', '行5列3'],
-                ['行6列1', '行6列2', '行6列3'],
-                ['行7列1', '行7列2', '行7列3'],
-                ['行8列1', '行8列2', '行8列3'],
-                ['行9列1', '行9列2', '行9列3'],
-                ['行10列1', '行10列2', '行10列3']
-            ],
+            data: [],
             index: true,
             columnWidth: [50],
             align: ['center']
         },
-        option: {
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                show: true,
-                left: '50%',
-                top: '50%'
-            },
-            series: [
-                {
-                name: 'Access From',
-                type: 'pie',
-                radius: '50%',
-                data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }   
+        chartOneOption: {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [],
+                        emphasis: {
+                            itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
                     }
-                }
-            ]
-        }
+                ]
+            }
     }
  },
  methods:{
@@ -347,75 +330,40 @@ export default {
   
     },
 
-    backgroundImg (src,style,num,el) {
-      var image = new Image()
-      image.src = src
-      image.style = style
+    // backgroundImg (src,style,num,el) {
+    //   var image = new Image()
+    //   image.src = src
+    //   image.style = style
 
-       // add split symbol between numbers
-      var divNode = document.createElement("div");
-      divNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
+    //    // add split symbol between numbers
+    //   var divNode = document.createElement("div");
+    //   divNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
 
-      el.appendChild(image.cloneNode(true))
+    //   el.appendChild(image.cloneNode(true))
 
-      el.appendChild(divNode)
-      for(var i = 0; i < num; i++){
-        el.appendChild(image.cloneNode(true))
-      }
+    //   el.appendChild(divNode)
+    //   for(var i = 0; i < num; i++){
+    //     el.appendChild(image.cloneNode(true))
+    //   }
      
-      el.appendChild(divNode.cloneNode(true))
+    //   el.appendChild(divNode.cloneNode(true))
 
-      for(var j = 0; j < num; j++){
-        el.appendChild(image.cloneNode(true))
-      }
+    //   for(var j = 0; j < num; j++){
+    //     el.appendChild(image.cloneNode(true))
+    //   }
 
-      el.appendChild(divNode.cloneNode(true))
+    //   el.appendChild(divNode.cloneNode(true))
 
-      for(var k = 0; k < 2; k++){
-        el.appendChild(image.cloneNode(true))
-      }
-    },
+    //   for(var k = 0; k < 2; k++){
+    //     el.appendChild(image.cloneNode(true))
+    //   }
+    // },
 
     setMyChartOne(){
         const chart = this.$refs.chart1
         if(chart){
             const thisChart = this.$echarts.init(chart)
-            const option = {
-                title: {
-                    text: 'Referer of a Website',
-                    subtext: 'Fake Data',
-                    left: 'center'
-                  },
-                tooltip: {
-                    trigger: 'item'
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left'
-                },
-                series: [
-                    {
-                        name: 'Access From',
-                        type: 'pie',
-                        radius: '50%',
-                        data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' }
-                        ],
-                        emphasis: {
-                            itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
-                    }
-                ]
-            }
-            thisChart.setOption(option)
+            thisChart.setOption(this.chartOneOption)
             window.addEventListener("resize",function(){
                 thisChart.resize()
             })
@@ -774,20 +722,52 @@ export default {
 
     getThisYearScale(){
         getThisYearScale({}).then(res => {
-            console.log("res",res)
-            // this.config2num = res.bnywgm
-        }
-            )
+            console.log("parseFloat(res.bnywgm)",parseFloat(res.bnywgm))
+            this.$set(this.config2.number,0, parseFloat(res.bnywgm))
+            console.log("this.config2.number",this.config2.number[0]);
+            this.config2 = {...this.config2}
+        })
+    },
+
+    getMultiTypeScale(){
+        getMultiTypeScale({}).then(res => {
+            this.chartOneOption.series[0].data = res.map(e => {
+                e.value = parseFloat(e.value)
+                return e
+            })
+            this.chartOneOption = {...this.chartOneOption}
+            console.log("this.chartOneOption",this.chartOneOption);
+        })
+    },
+
+    getSpecialProductScale(){
+        getSpecialProductScale({}).then(res => {
+            res.map((e,index) =>{
+                this.$set(this.configProduct.data, index, [e.product_name])
+            })
+            console.log("res33333333",res)
+            this.configProduct = {...this.configProduct}
+            console.log("this.configProduct.data",this.configProduct.data);
+        })
+    },
+
+    getMap(){
+        getMap({}).then(res => {
+            console.log("res-map",res[0]);
+        })
     }
  },
  created(){
-    const a = 2435234.99
-    this.config2['number'] =  [a] 
-    console.log("config2",this.config2.number[0]);
+    
  },
+
  mounted(){
+    this.getThisYearScale();
+    this.getMultiTypeScale();
+    this.getSpecialProductScale();
+    // this.getMap();
+
     // this.render()
-    this.getThisYearScale()
     // this.drawNumBg()
     this.setMyChartOne()
     this.setMyChartTwo()
@@ -1071,7 +1051,7 @@ button{
 .specialProduct{
     display: flex;
     justify-content: space-around;
-    margin: 20px 0 10px 65px;
+    margin: 20px 90px 10px 65px;
 }
 
 .product{
