@@ -163,16 +163,6 @@ export default {
 				};
 			});
 		},
-		getJsonNew () {
-			this.option.series[0].data = this.mockData.map((item) => { // 显示窗口的数据转换
-				return {
-					value: (Math.random() * 1000).toFixed(0),
-					name: item.PROVINCE_NAME
-				};
-			});
-			console.log("this.option.series[0].data",this.option.series[0].data);
-
-		},
 		getMap(){
 			getMap({}).then(res => {
 				res.map((e,index) => {
@@ -180,6 +170,16 @@ export default {
 				})
 				console.log("this.mockData",this.mockData);
 			})
+		},
+		getJsonNew () {
+			this.option.series[0].data = this.mockData.map((item) => { // 显示窗口的数据转换
+				return {
+					value: (Math.random() * 1000).toFixed(0),
+					name: item.PROVINCE_NAME
+				};
+			});
+			console.log("aaaaaaaathis.option.series[0].data",this.option.series[0].data);
+
 		}
   },
   mounted() {
@@ -189,7 +189,7 @@ export default {
     this.$echarts.registerMap('广东', gzData);
 	this.getMap();
 
-	this.getJsonNew();
+	this.getJsonNew()
   }
 };
 </script>

@@ -9,6 +9,9 @@ import * as echarts from 'echarts'
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
+axios.defaults.retry = 4;
+axios.defaults.retryDelay = 1000;
+
 Vue.component(NumberFlop.name,NumberFlop)
 
 Vue.use(dataV)
