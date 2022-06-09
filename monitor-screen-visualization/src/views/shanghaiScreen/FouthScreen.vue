@@ -29,8 +29,7 @@
           <div class="middle-left col-1">
               <div class="target-show">
                   <div class="target-title left-title">各业务类型交易规模</div>
-                  <div class="chart" id="myChart1" ref="chart1" style="width:800px;height:300px">
-                  </div>
+                  <v-chart class="chart" :options="chartOneOption"></v-chart>
               </div>
               <div class="target-show">
                   <div class="target-title left-title">业务客群规模</div>
@@ -177,7 +176,6 @@ export default {
             imgStyle: "width: 68px; height: 95px"
         },
         config2: {
-            //number: [this.config2num],   //[41017301.57],
             number: [],
             toFixed: 2,
             content: '{nt}',
@@ -273,19 +271,43 @@ export default {
                 },
                 legend: {
                     orient: 'vertical',
-                    left: 'left'
+                    bottom: '10%',
+                    right: '10%',
+                    textStyle:{
+                        color: '#fff'
+                    }
+                },
+                label:{
+                    color: '#fff',
+                    fontWeight: 'bolder',
+                    fontSize: 15,
+                    formatter: '{b}\n{d}'
                 },
                 series: [
                     {
                         name: '',
                         type: 'pie',
-                        radius: '50%',
+                        radius: '70%',
                         data: [],
                         emphasis: {
                             itemStyle: {
                             shadowBlur: 10,
                             shadowOffsetX: 0,
                             shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        labelLine: {
+                            show: true,
+                            length2: 50
+                        },
+                        itemStyle: {
+                            color: function (colors) {
+                                var colorList = [
+                                '#a6faf6',
+                                '#5e83dd',
+                                '#fe6666'
+                                ];
+                                return colorList[colors.dataIndex];
                             }
                         }
                     }
@@ -330,40 +352,13 @@ export default {
   
     },
 
-    // backgroundImg (src,style,num,el) {
-    //   var image = new Image()
-    //   image.src = src
-    //   image.style = style
-
-    //    // add split symbol between numbers
-    //   var divNode = document.createElement("div");
-    //   divNode.style = "width:42px;height:120px;opacity:0;background-color:green;"
-
-    //   el.appendChild(image.cloneNode(true))
-
-    //   el.appendChild(divNode)
-    //   for(var i = 0; i < num; i++){
-    //     el.appendChild(image.cloneNode(true))
-    //   }
-     
-    //   el.appendChild(divNode.cloneNode(true))
-
-    //   for(var j = 0; j < num; j++){
-    //     el.appendChild(image.cloneNode(true))
-    //   }
-
-    //   el.appendChild(divNode.cloneNode(true))
-
-    //   for(var k = 0; k < 2; k++){
-    //     el.appendChild(image.cloneNode(true))
-    //   }
-    // },
-
     setMyChartOne(){
         const chart = this.$refs.chart1
         if(chart){
             const thisChart = this.$echarts.init(chart)
+            console.log("thisChart",thisChart);
             thisChart.setOption(this.chartOneOption)
+            console.log("thisChartAfter",thisChart);
             window.addEventListener("resize",function(){
                 thisChart.resize()
             })

@@ -125,7 +125,7 @@ export default {
 
       this.mergedConfig = deepMerge(deepClone(defaultConfig, true), config || {})
 
-      console.log("this.mergedConfig",this.mergedConfig);
+      // console.log("this.mergedConfig",this.mergedConfig);
     },
     initGraph () {
       const { getShape, getStyle, renderer, mergedConfig } = this
@@ -208,8 +208,8 @@ export default {
       const {imgSrc, imgStyle, number}= mergedConfig
       const el =  this.$refs['flop-background']
       
-      console.log("mmmm",number);
-      console.log("mergedConfig",mergedConfig);
+      // console.log("mmmm",number);
+      // console.log("mergedConfig",mergedConfig);
       var num = number[0].toFixed(0)
 
       var cnt = 0

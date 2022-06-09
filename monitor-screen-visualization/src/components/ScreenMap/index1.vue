@@ -1,15 +1,15 @@
+<!--GZ地图  -->
 <template>
-	<div ref="myChart" id="myChart" class="screen-map"></div>
+		<div ref="myChart" id="myChart" class="gzMap"></div>
 </template>
+
 <script>
 import gzData from '../../assets/json/data.json'
-import { getMap } from '@/request/api_screen';
 export default {
-  name: "screen-map",
-  data() {
-    return {
-		mockData: [],
-      mTime: '',
+	name: 'screen-map',
+	data () {
+		return {
+			mTime: '',
 			charts: '',
 			index: -1,
 			option: {
@@ -24,8 +24,8 @@ export default {
 					tooltip: { // 显示的窗口
 						trigger: 'item',
 						formatter: function (item) {
-							console.log("item",item);
 							var tipHtml = '';
+                            console.log("item",item);
 							tipHtml = `<div style="padding: .6rem .8rem;font-size: .325rem;color:#fff;border-radius:10%;background: linear-gradient(#cccecf, #cccecf) left top,
 									linear-gradient(#cccecf, #cccecf) left top,
 									linear-gradient(#cccecf, #cccecf) right top,
@@ -35,14 +35,14 @@ export default {
 									linear-gradient(#cccecf, #cccecf) right bottom,
 									linear-gradient(#cccecf, #cccecf) right bottom;
 							background-repeat: no-repeat;
-							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span> </div>`;
+							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">5家</span> </div>`;
 							return tipHtml;
 						},
-						borderWidth: 0 
+						borderWidth: 0
 					},
-					name: '中国地图数据',
+					name: '广东省数据',
 					type: 'map',
-					map: 'China', // 自定义扩展图表类型
+					map: '广东', // 自定义扩展图表类型
 					zoom: 0.65, // 缩放
 					showLegendSymbol: true,
 					label: { // 文字
@@ -86,17 +86,32 @@ export default {
 						},
 					},
 					layoutCenter: ['50%', '50%'],
-					layoutSize: '150%',
+					layoutSize: '160%',
 					markPoint: {
 						symbol: 'none'
 					},
-					data: []
+					data: '',
 				}],
 			}
-    };
-  },
-  methods: {
-    setMyEchart () {
+		};
+	},
+
+	components: {
+	},
+
+	computed: {},
+
+	mounted () {
+		this.setMyEchart(); // 页面挂载完成后执行
+	},
+	created () {
+		this.$echarts.registerMap('广东', gzData);
+		this.getJson();
+		console.log("series[0]",this.option.series[0]);
+
+	},
+	methods: {
+		setMyEchart () {
 			const myChart = this.$refs.myChart; // 通过ref获取到DOM节点
 			if (myChart) {
 				const thisChart = this.$echarts.init(myChart); // 利用原型调取Echarts的初始化方法
@@ -106,7 +121,7 @@ export default {
 				const option = this.option; // {}内写需要图表的各种配置，可以在官方案例中修改完毕后复制过来
 				thisChart.setOption(option); // 将编写好的配置项挂载到Echarts上
 				window.addEventListener('resize', function () {
-					thisChart.resize(); // 页面大小变化后Echarts也更改大小
+					thisChart.resize(); // 页面大小变化后Echa	rts也更改大小
 				});
 			}
 		},
@@ -130,8 +145,7 @@ export default {
 		},
 		// 高亮轮播
 		mapActive () {
-			const dataLength = this.option.series[0].data.length;
-			console.log("1: dataLength",dataLength);
+			const dataLength = gzData.features.length;
 			// 用定时器控制高亮
 			this.mTime = setInterval(() => {
 				// 清除之前的高亮
@@ -159,45 +173,20 @@ export default {
 		},
 		getJson () {
 			this.option.series[0].data = gzData.features.map((item) => { // 显示窗口的数据转换
-				console.log("gdData: item",item);
 				return {
 					value: (Math.random() * 1000).toFixed(2),
 					name: item.properties.name
 				};
 			});
-		},
-		getMap(){
-			getMap({}).then(res => {
-				res.map(e => {
-					console.log("ChinaData: ",e);
-					console.log("getMap2: this.option.series[0].data",this.option.series[0].data)
-					this.option.series[0].data.push(
-						{
-							name: e.PRODUCT_NAME + ' ' + e.CUSTOMER_NAME + ' ' + e.PROVINCE_NAME,
-							value: parseFloat(e.BUSINESS_SCALE)
-						}
-					)
-				})
-				console.log("getMap3: this.option.series[0].data",this.option.series[0].data)
-			})
+			console.log("data",this.option.series[0].data);
 		}
-  },
-  mounted() {
-    this.setMyEchart(); // 页面挂载完成后执行
-  },
-  created(){
-	// this.getJson();
-	console.log("1: created: this.option.series[0].data",this.option.series[0].data);
-	this.getMap();
-    this.$echarts.registerMap('China', gzData);
-
-  }
+	}
 };
-</script>
 
-<style  scoped>
-.screen-map{
-    width: 100%;
-    height: 100%;
-}
+</script>
+<style lang='less' rel="stylesheet/less" scoped>
+.gzMap{
+        width:100%;
+        height:100%
+    }
 </style>

@@ -14,6 +14,16 @@ axios.defaults.retryDelay = 1000;
 
 Vue.component(NumberFlop.name,NumberFlop)
 
+import ECharts from 'vue-echarts'
+import 'echarts/lib/chart/bar'
+  import 'echarts/lib/chart/line'
+  import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/polar'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/title.js'
+Vue.component('v-chart', ECharts)
+
 Vue.use(dataV)
 
 Vue.prototype.$echarts = echarts
