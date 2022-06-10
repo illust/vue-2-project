@@ -717,9 +717,9 @@ export default {
 
     getThisYearScale(){
         getThisYearScale({}).then(res => {
-            console.log("parseFloat(res.bnywgm)",parseFloat(res.bnywgm))
+            // console.log("parseFloat(res.bnywgm)",parseFloat(res.bnywgm))
             this.$set(this.config2.number,0, parseFloat(res.bnywgm))
-            console.log("this.config2.number",this.config2.number[0]);
+            // console.log("this.config2.number",this.config2.number[0]);
             this.config2 = {...this.config2}
         })
     },
@@ -731,7 +731,7 @@ export default {
                 return e
             })
             this.chartOneOption = {...this.chartOneOption}
-            console.log("this.chartOneOption",this.chartOneOption);
+            // console.log("this.chartOneOption",this.chartOneOption);
         })
     },
 
@@ -740,9 +740,8 @@ export default {
             res.map((e,index) =>{
                 this.$set(this.configProduct.data, index, [e.product_name])
             })
-            console.log("res33333333",res)
             this.configProduct = {...this.configProduct}
-            console.log("this.configProduct.data",this.configProduct.data);
+            // console.log("this.configProduct.data",this.configProduct.data);
         })
     },
 
