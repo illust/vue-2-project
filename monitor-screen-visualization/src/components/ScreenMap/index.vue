@@ -8,6 +8,7 @@ export default {
   name: "screen-map",
   data() {
     return {
+		res: [],
 		mockData: [],
       mTime: '',
 			charts: '',
@@ -35,7 +36,7 @@ export default {
 									linear-gradient(#cccecf, #cccecf) right bottom,
 									linear-gradient(#cccecf, #cccecf) right bottom;
 							background-repeat: no-repeat;
-							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span> </div>`;
+							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <br /><span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span><br /><span style="color:#f9eb59;font-size:.4rem">产品名：${item.data.product}</span><br /><span style="color:#f9eb59;font-size:.4rem">客户名：${item.data.customer}</span></div>`;
 							return tipHtml;
 						},
 						borderWidth: 0 
@@ -97,6 +98,7 @@ export default {
   },
   methods: {
     setMyEchart () {
+		console.log("setMyEchart",this.option.series[0].data)
 			const myChart = this.$refs.myChart; // 通过ref获取到DOM节点
 			if (myChart) {
 				const thisChart = this.$echarts.init(myChart); // 利用原型调取Echarts的初始化方法
@@ -131,6 +133,7 @@ export default {
 		// 高亮轮播
 		mapActive () {
 			const dataLength = this.option.series[0].data.length;
+			// const dataLength = gzData.features.length;
 			console.log("1: dataLength",dataLength);
 			// 用定时器控制高亮
 			this.mTime = setInterval(() => {
@@ -157,40 +160,53 @@ export default {
 				}
 			}, 2000);
 		},
-		getJson () {
-			this.option.series[0].data = gzData.features.map((item) => { // 显示窗口的数据转换
-				console.log("gdData: item",item);
+		getJson (res) {
+
+			console.log('rrr',res);
+			this.option.series[0].data = res.map((e) => { // 显示窗口的数据转换
+				console.log("gdData: item",e);
 				return {
-					value: (Math.random() * 1000).toFixed(2),
-					name: item.properties.name
+					// name: e.PRODUCT_NAME + ' ' + e.CUSTOMER_NAME + ' ' + e.PROVINCE_NAME,
+					name: e.PROVINCE_NAME,
+					product: e.PRODUCT_NAME,
+					customer: e.CUSTOMER_NAME,
+					value: parseFloat(e.BUSINESS_SCALE)
 				};
-			});
+			})
+			this.$nextTick(() => {
+					this.setMyEchart(); // 页面挂载完成后执行
+				})
 		},
 		getMap(){
 			getMap({}).then(res => {
-				res.map(e => {
+				this.option.series[0].data = res.map(e => {
 					console.log("ChinaData: ",e);
 					console.log("getMap2: this.option.series[0].data",this.option.series[0].data)
-					this.option.series[0].data.push(
-						{
+						return {
 							name: e.PRODUCT_NAME + ' ' + e.CUSTOMER_NAME + ' ' + e.PROVINCE_NAME,
 							value: parseFloat(e.BUSINESS_SCALE)
 						}
-					)
 				})
+				// this.charts.setOption(this.option)
+				// this.option.series[0].data
 				console.log("getMap3: this.option.series[0].data",this.option.series[0].data)
+				this.$nextTick(() => {
+					this.setMyEchart(); // 页面挂载完成后执行
+				})
 			})
 		}
   },
   mounted() {
-    this.setMyEchart(); // 页面挂载完成后执行
+	// this.getMap();
+	// this.setMyEchart(); // 页面挂载完成后执行
   },
   created(){
-	// this.getJson();
-	console.log("1: created: this.option.series[0].data",this.option.series[0].data);
-	this.getMap();
+	getMap({}).then(res => {
+		this.getJson(res);
+	})
     this.$echarts.registerMap('China', gzData);
-
+	// this.getMap();
+	console.log("1: created: this.option.series[0].data",this.option.series[0].data);
   }
 };
 </script>
