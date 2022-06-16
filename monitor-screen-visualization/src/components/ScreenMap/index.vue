@@ -36,7 +36,7 @@ export default {
 									linear-gradient(#cccecf, #cccecf) right bottom,
 									linear-gradient(#cccecf, #cccecf) right bottom;
 							background-repeat: no-repeat;
-							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">${item.data.name} <br /><span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span><br /><span style="color:#f9eb59;font-size:.4rem">产品名：${item.data.product}</span><br /><span style="color:#f9eb59;font-size:.4rem">客户名：${item.data.customer}</span></div>`;
+							background-size: .08rem .3rem, .3rem .08rem;background-color:rgba(6, 79, 111,.6);">省份：${item.data.name} <br /><span style="color:#f9eb59;font-size:.4rem">${item.data.value} 家</span><br /><span style="color:#f9eb59;font-size:.4rem">产品名：${item.data.product}</span><br /><span style="color:#f9eb59;font-size:.4rem">客户名：${item.data.customer}</span></div>`;
 							return tipHtml;
 						},
 						borderWidth: 0 
@@ -155,13 +155,13 @@ export default {
 					seriesIndex: 0,
 					dataIndex: this.index
 				});
+				console.log("this.index",this.index);
 				if (this.index > dataLength) {
 					this.index = 0;
 				}
 			}, 2000);
 		},
 		getJson (res) {
-
 			console.log('rrr',res);
 			this.option.series[0].data = res.map((e) => { // 显示窗口的数据转换
 				console.log("gdData: item",e);
@@ -175,6 +175,7 @@ export default {
 			})
 			this.$nextTick(() => {
 					this.setMyEchart(); // 页面挂载完成后执行
+					console.log("next data",this.option.series[0].data);
 				})
 		},
 		getMap(){

@@ -147,6 +147,7 @@
 
 <script>
 // import ScreenHeader from '../../components/ScreenHeader'
+/* eslint-env node */
 import ScreenMap from '../../components/ScreenMap'
 import { getThisYearScale, getMultiTypeScale, getSpecialProductScale, getMap } from '../../request/api_screen';
 export default {
